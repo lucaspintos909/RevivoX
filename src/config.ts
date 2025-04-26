@@ -1,6 +1,6 @@
 export const config = {
-  appName: "Shipfree",
-  domainName: "https://shipfree.idee8.agency",
+  appName: "RevivoX",
+  domainName: "https://revivox.uy",
   mailgun: {
     // subdomain to use when sending emails, if you don't have a subdomain, just remove it. Highly recommended to have one (i.e. mg.yourdomain.com or mail.yourdomain.com)
     subdomain: "mg",

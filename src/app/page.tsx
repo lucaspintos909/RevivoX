@@ -11,7 +11,7 @@ import TestimonialsPage from "@/app/(site)/Testimonials";
 
 // required by Nextra
 export const metadata: Metadata = {
-  title: "ShipFree",
+  title: "RevivoX",
 };
 
 export default function Home() {
