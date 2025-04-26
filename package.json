@@ -1,5 +1,5 @@
 {
-  "name": "shipfree",
+  "name": "revivox",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -37,7 +37,8 @@
     "react-icons": "^5.4.0",
     "stripe": "^17.6.0",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
