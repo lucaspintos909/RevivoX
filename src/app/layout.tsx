@@ -13,18 +13,21 @@ const museoModerno = MuseoModerno({
 export const metadata: Metadata = {
   title: "RevivoX",
   description:
-    "Open Source Alternative to ShipFast - Launch your startup in days Not in weeks",
+    "Venta de laptops usadas en Montevideo, Uruguay",
   keywords: [
-    "saas",
-    "boilerplate",
-    "open source",
-    "free",
-    "open source shipfast",
-    "shipfree",
-    "idee8",
-    "made by idee8",
-    "free boilerplate",
-    "github",
+    "venta de laptops",
+    "laptops usadas",
+    "laptops en Montevideo",
+    "laptops en Uruguay",
+    "laptops en Montevideo",
+    "laptops usadas en Montevideo",
+    "laptops reacondicionadas",
+    "laptops baratas",
+    "laptops baratas en Montevideo",
+    "laptops baratas en Uruguay",
+    "laptops baratas en Montevideo",
+    "laptops baratas usadas",
+    "laptops baratas usadas en Montevideo",
   ],
 };
 
