@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { MuseoModerno } from "next/font/google";
 import "./globals.css";
 import type React from "react"; // Import React
 import { cn } from "@/lib/utils";
+import CodeSigningInjeciton from "@/components/CodeSigningInjection";
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const museoModerno = MuseoModerno({
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ShipFree",
+  title: "RevivoX",
   description:
     "Open Source Alternative to ShipFast - Launch your startup in days Not in weeks",
   keywords: [
@@ -33,9 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(bricolageGrotesque.className, "antialiased")}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(museoModerno.className, "antialiased")}>
         {children}
+        <CodeSigningInjeciton />
       </body>
     </html>
   );
