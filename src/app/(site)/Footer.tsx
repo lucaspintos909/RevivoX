@@ -34,7 +34,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-zinc-400 hover:text-white">
+                <a href="#productos" className="text-zinc-400 hover:text-white">
                   Pricing
                 </a>
               </li>
