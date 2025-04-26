@@ -19,7 +19,7 @@ const HeroSection = () => {
       <div className="max-w-7xl w-full mx-auto py-16 flex flex-col lg:flex-row justify-between items-center">
         <div className="w-full lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
 
-          <h1 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-[#CFCFCF] leading-tight transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'} min-h-[120px] sm:min-h-[150px] md:min-h-[180px] lg:min-h-[200px] w-full max-w-3xl`}>
+          <h1 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-[#CFCFCF] leading-tight transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'} min-h-[135px] sm:min-h-[150px] md:min-h-[180px] lg:min-h-[200px] w-full max-w-3xl`}>
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
