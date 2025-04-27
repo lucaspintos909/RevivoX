@@ -8,8 +8,9 @@ import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
 import { ProductType } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Suspense } from 'react';
 
-export default function CatalogPage() {
+function CatalogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = (searchParams.get('type') as ProductType) || 'todos';
@@ -91,5 +92,13 @@ export default function CatalogPage() {
         </motion.div>
       )}
     </div>
+  );
+}
+
+export default function CatalogPage() {
+  return (
+    <Suspense fallback={<CatalogSkeleton />}>
+      <CatalogContent />
+    </Suspense>
   );
 }
