@@ -16,7 +16,7 @@ const Section: React.FC<SectionProps> = ({ icon, title, content }) => (
   </div>
 );
 
-const MISSION_CONTENT = "En <strong className='text-white'>RevivoX</strong> reacondicionamos laptops con pasión y excelencia para darles una segunda vida, acercando tecnología de calidad a más personas de manera accesible, sustentable y responsable.";
+const MISSION_CONTENT = "En RevivoX reacondicionamos laptops con pasión y excelencia para darles una segunda vida, acercando tecnología de calidad a más personas de manera accesible, sustentable y responsable.";
 
 const VISION_CONTENT = "Ser la marca líder en tecnología reacondicionada en Latinoamérica, inspirando a una nueva generación de usuarios a elegir consciente, conectando oportunidades, educación y sustentabilidad en cada laptop que vuelve a vivir.";
 
