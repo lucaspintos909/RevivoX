@@ -1,10 +1,10 @@
 export default function MissionVision() {
   return (
-    <div className="bg-[#212121] py-16">
+    <div className="bg-[#212121] pb-16 pt-5">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Misión */}
-          <div className="bg-zinc-800 p-8 rounded-xl shadow-lg border border-zinc-700">
+          <div className="">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">🌟</span>
               <h2 className="text-2xl font-bold text-white">Misión</h2>
@@ -15,7 +15,7 @@ export default function MissionVision() {
           </div>
 
           {/* Visión */}
-          <div className="bg-zinc-800 p-8 rounded-xl shadow-lg border border-zinc-700">
+          <div className="">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">🚀</span>
               <h2 className="text-2xl font-bold text-white">Visión</h2>
