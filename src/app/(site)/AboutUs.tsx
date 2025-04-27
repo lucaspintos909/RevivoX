@@ -3,72 +3,43 @@ import Image from 'next/image';
 export default function AboutUs() {
   return (
     <div id="nosotros" className="bg-[#212121] py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold text-white text-center mb-12">
           Conoce al equipo detrás de RevivoX
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Fundador 1 */}
-          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-lg">
-            <div className="relative h-64 w-full">
-              <Image
-                src="https://msythrtpwmlfwzsdwqik.supabase.co/storage/v1/object/public/images/team-member-1.jpg"
-                alt="Fundador 1"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-white mb-2">Nombre Fundador 1</h3>
-              <p className="text-gray-400 mb-4">Cargo / Rol</p>
-              <p className="text-gray-300">
-                Breve descripción del fundador, su experiencia y su pasión por la tecnología y la sustentabilidad.
-              </p>
-              <div className="mt-4 flex gap-4">
-                <a href="#" className="text-[#FF8806] hover:text-[#ffa039]">
-                  LinkedIn
-                </a>
-                <a href="#" className="text-[#FF8806] hover:text-[#ffa039]">
-                  Twitter
-                </a>
-              </div>
-            </div>
-          </div>
+        <div className="relative w-full h-[500px] mb-12">
+          <Image
+            src="https://images.unsplash.com/photo-1603861868946-cafb303e0387?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Equipo RevivoX"
+            fill
+            className="object-cover rounded-lg"
+            priority
+          />
+        </div>
 
-          {/* Fundador 2 */}
-          <div className="bg-zinc-800 rounded-lg overflow-hidden shadow-lg">
-            <div className="relative h-64 w-full">
-              <Image
-                src="https://msythrtpwmlfwzsdwqik.supabase.co/storage/v1/object/public/images/team-member-2.jpg"
-                alt="Fundador 2"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-white mb-2">Nombre Fundador 2</h3>
-              <p className="text-gray-400 mb-4">Cargo / Rol</p>
-              <p className="text-gray-300">
-                Breve descripción del fundador, su experiencia y su pasión por la tecnología y la sustentabilidad.
-              </p>
-              <div className="mt-4 flex gap-4">
-                <a href="#" className="text-[#FF8806] hover:text-[#ffa039]">
-                  LinkedIn
-                </a>
-                <a href="#" className="text-[#FF8806] hover:text-[#ffa039]">
-                  Twitter
-                </a>
-              </div>
-            </div>
-          </div>
+        <div className="text-center mb-12">
+          <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+            Somos <span className="font-bold">Agustín</span> y <span className="font-bold">Lucas</span>, dos estudiantes de informática apasionados por la tecnología y el medio ambiente. 
+            Fundamos RevivoX con la misión de dar una segunda vida a laptops, combinando innovación, sostenibilidad y accesibilidad en todo Uruguay. 
+            Nuestro objetivo es reducir el impacto ambiental de la tecnología, ofreciendo equipos reacondicionados de alta calidad que se adaptan a las necesidades actuales.
+          </p>
+        </div>
+
+        <div className="flex justify-center gap-8">
+          <a href="#" className="text-[#FF8806] hover:text-[#ffa039] text-lg">
+            LinkedIn
+          </a>
+          <a href="#" className="text-[#FF8806] hover:text-[#ffa039] text-lg">
+            Twitter
+          </a>
         </div>
 
         <div className="mt-12 text-center">
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Juntos, combinamos nuestra pasión por la tecnología y la sustentabilidad para crear RevivoX, 
-            una empresa que no solo reacondiciona laptops, sino que también construye un futuro más sostenible 
-            para la tecnología en Latinoamérica.
+            En RevivoX, creemos que la tecnología sostenible no es solo una tendencia, 
+            es el futuro. Cada laptop que reacondicionamos es un paso más hacia un mundo 
+            donde la innovación y la responsabilidad ambiental van de la mano.
           </p>
         </div>
       </div>
