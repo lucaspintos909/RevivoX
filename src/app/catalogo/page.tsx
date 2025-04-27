@@ -1,104 +1,87 @@
-'use client';
-
-import { useQuery } from '@tanstack/react-query';
-import { useSearchParams, useRouter } from 'next/navigation';
-import { getProducts } from './api';
-import ProductCard from './components/ProductCard';
+import { createClient } from '@/lib/supabase/server';
+import { Product, ProductType } from './types';
 import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
-import { ProductType } from './types';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Suspense } from 'react';
+import AnimatedProducts from './components/AnimatedProducts';
 
-function CatalogContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const type = (searchParams.get('type') as ProductType) || 'todos';
-  const page = parseInt(searchParams.get('page') || '0');
+const ITEMS_PER_PAGE = 12;
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['products', type, page],
-    queryFn: () => getProducts(page, type),
-  });
+async function getProducts(page: number = 0, type: ProductType = 'todos'): Promise<{
+  products: Product[];
+  hasMore: boolean;
+}> {
+  const supabase = await createClient();
+  
+  const from = page * ITEMS_PER_PAGE;
+  const to = from + ITEMS_PER_PAGE - 1;
+
+  let query = supabase
+    .from('products')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false });
+
+  if (type === 'vendidos') {
+    query = query.eq('sold', true);
+  } else if (type !== 'todos') {
+    const productType = type === 'laptops' ? 'laptop' : 
+                       type === 'minipc' ? 'minipc' : 
+                       type === 'accessories' ? 'accessory' : 'other';
+    query = query.eq('type', productType).eq('sold', false);
+  } else {
+    query = query.eq('sold', false);
+  }
+
+  const { data, error, count } = await query.range(from, to);
+
+  if (error) {
+    console.error('Error fetching products:', error);
+    throw new Error('Error al obtener los productos');
+  }
+
+  return {
+    products: data as Product[],
+    hasMore: count ? from + ITEMS_PER_PAGE < count : false
+  };
+}
+
+function CatalogContent({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const type = (searchParams.type as ProductType) || 'todos';
+  const page = parseInt(searchParams.page as string) || 0;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Catálogo de Productos</h1>
       <ProductFilters />
       
-      <AnimatePresence mode="wait">
-        {isLoading ? (
-          <CatalogSkeleton key={`skeleton-${type}-${page}`} />
-        ) : (
-          <motion.div
-            key={`products-${type}-${page}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
-            {data?.products.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {!isLoading && data?.products.length === 0 && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-12"
-        >
-          <p className="text-gray-500">No se encontraron productos</p>
-        </motion.div>
-      )}
-
-      {!isLoading && data?.hasMore && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mt-8 space-x-4"
-        >
-          <button
-            onClick={() => {
-              const params = new URLSearchParams(searchParams);
-              params.set('page', (page - 1).toString());
-              router.push(`/catalogo?${params.toString()}`);
-            }}
-            disabled={page === 0}
-            className="px-4 py-2 bg-primary text-white rounded disabled:opacity-50"
-          >
-            Anterior
-          </button>
-          <button
-            onClick={() => {
-              const params = new URLSearchParams(searchParams);
-              params.set('page', (page + 1).toString());
-              router.push(`/catalogo?${params.toString()}`);
-            }}
-            className="px-4 py-2 bg-primary text-white rounded"
-          >
-            Siguiente
-          </button>
-        </motion.div>
-      )}
+      <Suspense fallback={<CatalogSkeleton />}>
+        <CatalogProducts type={type} page={page} />
+      </Suspense>
     </div>
   );
 }
 
-export default function CatalogPage() {
+async function CatalogProducts({ type, page }: { type: ProductType; page: number }) {
+  const { products, hasMore } = await getProducts(page, type);
+
   return (
-    <Suspense fallback={<CatalogSkeleton />}>
-      <CatalogContent />
-    </Suspense>
+    <AnimatedProducts 
+      products={products} 
+      hasMore={hasMore} 
+      type={type} 
+      page={page} 
+    />
   );
+}
+
+export default function CatalogPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  return <CatalogContent searchParams={searchParams} />;
 }
