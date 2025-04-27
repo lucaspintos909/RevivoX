@@ -4,6 +4,7 @@ import "./globals.css";
 import type React from "react"; // Import React
 import { cn } from "@/lib/utils";
 import CodeSigningInjeciton from "@/components/CodeSigningInjection";
+import { Providers } from './providers';
 
 const museoModerno = MuseoModerno({
   subsets: ["latin"],
@@ -37,9 +38,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={cn(museoModerno.className, "antialiased")}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <CodeSigningInjeciton />
       </body>
     </html>
