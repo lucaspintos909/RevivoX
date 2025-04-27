@@ -55,33 +55,28 @@ const TOS = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Última atualização: 12/12/2023
+          {`Términos y Condiciones de Uso
+Fecha de vigencia: 27 de abril de 2025
 
-Bem-vindo ao Pump (https://gopump.co). Estes Termos e Condições de Uso ("Termos") regem o uso do nosso aplicativo, que visa ajudar treinadores pessoais e pessoas que frequentam academias a melhorarem seu desempenho. Ao acessar ou usar o Pump, você concorda em cumprir estes Termos.
+Bienvenido a RevivoX (https://revivox.com.uy). Al acceder o utilizar nuestro sitio web, aceptas cumplir estos Términos y Condiciones.
 
-1. Informações de Contato
+Descripción del Servicio
+RevivoX es una aplicación que permite a los clientes ver laptops usadas para evaluar su compra.
 
-Para quaisquer dúvidas ou informações, entre em contato conosco pelo e-mail official@gopump.co.
+Propiedad y Garantía
+Al comprar un producto, los usuarios pueden interactuar con varias funcionalidades. Todos los productos incluyen una garantía de 6 meses a partir de la fecha de compra. Esta garantía no cubre daños ocasionados por el cliente ni desgaste normal por uso.
 
-2. Propriedade e Uso do Serviço
+Información Recopilada
+Recopilamos nombre, correo electrónico, número de teléfono e información de pago. También utilizamos cookies para mejorar la experiencia del usuario. Para más información, consulta nuestra Política de Privacidad: https://revivox.com.uy/privacy-policy.
 
-Ao adquirir um plano ou assinatura no Pump, você tem acesso a diversas funcionalidades. Caso não esteja satisfeito, oferecemos um reembolso integral dentro de 7 dias após a compra.
+Actualizaciones a los Términos
+Nos reservamos el derecho de actualizar estos Términos y Condiciones. Cualquier cambio será notificado a los usuarios por correo electrónico.
 
-3. Coleta de Dados
+Ley Aplicable
+Estos Términos se rigen por las leyes de Uruguay.
 
-Coletamos dados pessoais, como nome, e-mail, telefone e informações de pagamento. Também utilizamos cookies da web para coletar dados não pessoais. Mais informações podem ser encontradas em nossa Política de Privacidade: https://gopump.co/privacy-policy.
-
-4. Lei Aplicável
-
-Estes Termos são regidos pelas leis do Brasil.
-
-5. Alterações nos Termos
-
-Reservamo-nos o direito de modificar estes Termos a qualquer momento. As alterações entrarão em vigor imediatamente após a publicação no site. Informaremos sobre alterações significativas através do e-mail fornecido por você.
-
-6. Aceitação dos Termos
-
-Ao usar o Pump, você declara que leu, entendeu e concordou em estar vinculado a estes Termos.`}
+Contacto
+Para cualquier duda o consulta sobre estos Términos y Condiciones, puedes contactarnos en revivox@gmail.com.`}
         </pre>
       </div>
     </main>
