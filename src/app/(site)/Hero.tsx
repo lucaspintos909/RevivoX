@@ -40,7 +40,7 @@ const HeroSection = () => {
               options={{
                 autoStart: true,
                 loop: true,
-                delay: 50,
+                delay: 30,
               }}
             />
           </h1>
