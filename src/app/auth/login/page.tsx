@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: "Login",
   description: "Log in to your account",
   openGraph: {
-    title: "Login | My App",
-    description: "Log in to your account on My App",
+    title: "Login | RevivoX",
+    description: "Log in to your account on RevivoX",
   },
 };
 

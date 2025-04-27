@@ -3,7 +3,6 @@ import SEO from "@/utils/seo";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -53,10 +52,10 @@ export default function LoginForm() {
   return (
     <>
       <SEO
-        title="My SaaS Boilerplate"
-        description="A Next.js TypeScript Login form."
-        canonicalUrl="https://yourdomain.com"
-        ogImageUrl="https://yourdomain.com/og-image.png"
+        title="Login | RevivoX"
+        description="Login to your account on RevivoX"
+        canonicalUrl="https://revivox.com.uy"
+        ogImageUrl="https://revivox.com.uy/og-image.png"
         twitterHandle="yourtwitterhandle"
       />
       <div className="space-y-6">
@@ -101,12 +100,6 @@ export default function LoginForm() {
             Sign in with Google
           </Button>
         </div>
-        <p className="text-center text-sm">
-          Don't have an account?{" "}
-          <Link href="/auth/register" className="text-blue-500 hover:underline">
-            Register
-          </Link>
-        </p>
       </div>
     </>
   );

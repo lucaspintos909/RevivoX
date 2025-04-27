@@ -4,7 +4,6 @@ import SEO from "@/utils/seo";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -70,15 +69,6 @@ export function LoginForm() {
               Login
             </Button>
           </form>
-          <p className="text-center text-sm pt-4">
-            Don&apos;t have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-blue-500 hover:underline"
-            >
-              Register
-            </Link>
-          </p>
         </div>
       </div>
     </>
