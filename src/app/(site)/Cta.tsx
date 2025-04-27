@@ -3,16 +3,13 @@ export default function CTA() {
     <section className="relative bg-[#0F0F0F] px-4 py-24 md:py-32">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="mb-4 text-4xl font-medium tracking-tight text-white md:text-5xl lg:text-6xl">
-          Boost your app, launch, earn
+          Dale una segunda vida a tu tecnología
         </h2>
         <p className="mb-8 text-lg text-zinc-400 md:text-xl">
-          Don&apos;t waste time on Stripe subscriptions or designing a pricing
-          section...
+          Únete a la revolución de la tecnología sostenible y encuentra la laptop perfecta para ti.
         </p>
         <a
-          href="https://github.com/idee8/shipfree"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#productos"
           className="inline-flex items-center gap-2 rounded-lg bg-[#FFB800] px-6 py-3 text-base font-medium text-black transition-colors hover:bg-[#FFB800]/90"
         >
           <svg
@@ -29,7 +26,7 @@ export default function CTA() {
               strokeLinejoin="round"
             />
           </svg>
-          Get ShipFree
+          Ver laptops disponibles
         </a>
       </div>
     </section>

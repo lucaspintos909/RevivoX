@@ -39,6 +39,12 @@ export default function Navbar() {
           >
             Reseñas
           </Link>
+          <Link
+            href="#nosotros"
+            className="text-base text-white/90 transition hover:text-white"
+          >
+            Nosotros
+          </Link>
         </div>
 
         <div className="flex md:hidden">
@@ -93,6 +99,13 @@ export default function Navbar() {
               onClick={toggleMenu}
             >
               Reseñas
+            </Link>
+            <Link
+              href="#nosotros"
+              className="block rounded-md px-3 py-2 text-base font-medium text-white/90 hover:bg-[#3C3C3C] hover:text-white"
+              onClick={toggleMenu}
+            >
+              Nosotros
             </Link>
           </div>
         </div>
