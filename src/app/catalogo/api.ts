@@ -1,13 +1,13 @@
-import { createClient } from '@/lib/supabase/client';
+import { createClient } from '@/lib/supabase/server';
 import { Product, ProductType } from './types';
 
 const ITEMS_PER_PAGE = 12;
 
-export async function getProducts(page: number = 0, type: ProductType = 'todos'): Promise<{
+export async function getProductsServer(page: number = 0, type: ProductType = 'todos'): Promise<{
   products: Product[];
   hasMore: boolean;
 }> {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const from = page * ITEMS_PER_PAGE;
   const to = from + ITEMS_PER_PAGE - 1;
@@ -42,7 +42,7 @@ export async function getProducts(page: number = 0, type: ProductType = 'todos')
 }
 
 export async function getProductById(id: number): Promise<Product | null> {
-  const supabase = createClient();
+  const supabase = await createClient();
   
   const { data, error } = await supabase
     .from('products')
