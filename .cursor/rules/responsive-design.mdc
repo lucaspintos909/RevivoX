@@ -1,0 +1,46 @@
+---
+description: 
+globs: *.tsx
+alwaysApply: false
+---
+### Rules for Generating HTML Code with TailwindCSS
+*
+- All HTML must be fully responsive, using Tailwind utilities (`flex`, `grid`, `responsive breakpoints`, etc.).
+- Always follow good accessibility practices (`alt` attributes for images, proper semantic structure with correct tags).
+- Code must be modular: separate logical components (e.g., using `partials` or `components`) and avoid class duplication.
+- Use Tailwind classes in an organized order: first layout (`flex`, `grid`), then spacing (`p-4`, `m-2`), and finally colors (`bg-gray-100`, `text-blue-500`, etc.).
+- Avoid excessively long inline class lists: prefer using `@apply` in `.css` files or creating reusable components when necessary.
+- Prioritize the use of breakpoints (`sm:`, `md:`, `lg:`, `xl:`) to ensure everything is mobile-first and responsive.
+
+---
+
+### 1. Adhere to Good Coding Practices
+- Generate clean, readable, and maintainable code.
+- Follow standard naming conventions for the specific language or framework.
+- Avoid code duplication (DRY - Don't Repeat Yourself principle).
+- Prioritize efficiency and performance where relevant.
+- Consider basic security aspects (e.g., input sanitization in backend, avoiding exposure of credentials) if the context allows.
+- Ensure accessibility (basic WCAG, ARIA attributes if necessary) in front-end code.
+
+---
+
+### 2. Modular Design and Implementation
+- Break down complex solutions into smaller, manageable parts.
+- Utilize functions, classes, modules, or components (depending on the language/framework) to organize code logically and promote reusability.
+- Minimize coupling between different parts of the code.
+
+---
+
+### 3. Explicit and Clear Documentation
+- Code Comments: Include concise inline comments to explain complex logic, non-obvious design decisions, or critical code sections. Use standard formats (e.g., JSDoc for JavaScript, docstrings for Python).
+- Overall Explanations: After generating code or a solution, provide a clear explanation of how it works, why that approach was chosen (especially if alternatives exist), and *how to use or integrate it.
+- Use descriptive variable, function, and class names that serve as self-documentation.
+
+---
+
+### 4. Response Structure
+- Present code in properly formatted code blocks for the specific language.
+- Clearly separate code from explanations.
+- If the solution involves multiple files or components, clearly indicate the structure or how they should interact.
+
+---
