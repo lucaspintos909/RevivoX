@@ -1,12 +1,12 @@
 import { Metadata } from "next";
+import AboutUs from "@/app/(site)/AboutUs";
 import CTA from "@/app/(site)/Cta";
 import FAQ from "@/app/(site)/Faq";
-import FeaturedTime from "@/app/(site)/FeaturedTime";
 import Footer from "@/app/(site)/Footer";
 import HeroSection from "@/app/(site)/Hero";
 import MakerIntro from "@/app/(site)/MakerIntro";
+import MissionVision from "@/app/(site)/MissionVision";
 import Navbar from "@/app/(site)/Navbar";
-import PricingSection from "@/app/(site)/pricing";
 import TestimonialsPage from "@/app/(site)/Testimonials";
 
 // required by Nextra
@@ -19,9 +19,9 @@ export default function Home() {
     <div className="bg-[#212121]">
       <Navbar />
       <HeroSection />
-      <FeaturedTime />
       <MakerIntro />
-      <PricingSection />
+      <AboutUs />
+      <MissionVision />
       <FAQ />
       <TestimonialsPage />
       <CTA />
