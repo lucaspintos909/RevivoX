@@ -19,6 +19,7 @@
     "@stripe/stripe-js": "^5.6.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.48.1",
+    "@tanstack/react-query": "^5.74.7",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -26,7 +27,7 @@
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.3",
     "form-data": "^4.0.1",
-    "framer-motion": "^12.0.6",
+    "framer-motion": "^12.0.9",
     "lemonsqueezy": "^0.0.1-claimed",
     "lemonsqueezy.ts": "^0.1.8",
     "lucide-react": "^0.474.0",
@@ -36,12 +37,15 @@
     "pg": "^8.13.3",
     "postgres": "^3.4.5",
     "react": "^19.1.0",
+    "react-content-loader": "^7.0.2",
     "react-dom": "^19.1.0",
     "react-icons": "^5.4.0",
+    "react-intersection-observer": "^9.16.0",
     "stripe": "^17.6.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
-    "typewriter-effect": "^2.21.0"
+    "typewriter-effect": "^2.21.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
