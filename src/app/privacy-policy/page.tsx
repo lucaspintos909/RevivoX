@@ -48,44 +48,38 @@ const PrivacyPolicy = () => {
           Voltar
         </Link>
         <h1 className="text-3xl font-extrabold pb-6">
-          Política de Privacidade do
+          Política de Privacidad
         </h1>
 
         <pre
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Última atualização: 12/12/2023
+          {`Política de Privacidad
+Fecha de vigencia: 27 de abril de 2025
 
-Bem-vindo ao Pump (https://gopump.co), um aplicativo dedicado a ajudar treinadores pessoais e entusiastas da fitness a melhorarem seu desempenho. Sua privacidade é de extrema importância para nós. Esta Política de Privacidade delineia os tipos de informações que coletamos, como as utilizamos e as medidas que tomamos para protegê-las.
+Bienvenido a RevivoX (https://revivox.com.uy). Tu privacidad es importante para nosotros. Esta Política de Privacidad explica cómo recopilamos, utilizamos y protegemos tu información.
 
-1. Coleta e Uso de Informações
+Información que Recopilamos
 
-Coletamos os seguintes tipos de informações:
+Información personal: Recopilamos tu nombre, dirección de correo electrónico y número de teléfono.
 
-Dados Pessoais: Isso inclui seu nome, endereço de e-mail, número de telefone e informações de pagamento. Coletamos esses dados para entender melhor e atender nossos clientes.
+Información no personal: Utilizamos cookies web para mejorar tu experiencia en nuestro sitio.
 
-Dados Não Pessoais: Utilizamos cookies da web para melhorar sua experiência em nosso site. Esses cookies nos ajudam a entender o comportamento do usuário em nosso site, mas não coletam informações pessoais.
+Propósito de la Recopilación de Datos
+Recopilamos tu información para conocer mejor a nuestros clientes.
 
-2. Finalidade da Coleta de Dados
+Compartición de Datos
+No compartimos tu información personal con terceros.
 
-O objetivo principal da coleta de dados é aprimorar nossos serviços e proporcionar uma experiência personalizada para nossos usuários. Entender nossos clientes nos ajuda a melhorar nosso aplicativo e oferecer orientação e suporte mais personalizados.
+Privacidad de los Niños
+No recopilamos intencionadamente información de niños menores de 13 años.
 
-3. Compartilhamento e Divulgação de Dados
+Actualizaciones de Esta Política de Privacidad
+Si realizamos cambios en esta Política de Privacidad, te notificaremos por correo electrónico.
 
-O Pump respeita sua privacidade. Não compartilhamos seus dados pessoais com terceiros. Qualquer dado coletado é exclusivamente para o propósito de aprimorar nosso serviço e não é compartilhado externamente.
-
-4. Privacidade Infantil
-
-Nossos serviços não são direcionados a crianças menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças. Se tomarmos conhecimento de que recebemos inadvertidamente informações pessoais de uma criança menor de 13 anos, excluiremos tais informações de nossos registros.
-
-5. Alterações na Nossa Política de Privacidade
-
-Podemos atualizar nossa Política de Privacidade de tempos em tempos. Notificaremos você sobre quaisquer alterações, publicando a nova Política de Privacidade nesta página e atualizando a data de "Última atualização". Você também será informado sobre quaisquer mudanças significativas por meio do endereço de e-mail que nos forneceu.
-
-6. Fale Conosco
-
-Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco em official@gopump.co.`}
+Contacto
+Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos en revivouy@gmail.com.`}
         </pre>
       </div>
     </main>
