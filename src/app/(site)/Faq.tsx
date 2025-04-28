@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-const faqs = [
+const faqs: FAQItem[] = [
   {
     question: "¿Qué es una laptop reacondicionada?",
     answer:
@@ -40,79 +41,11 @@ const faqs = [
   },
 ];
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleQuestion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <div
-      id="faq"
-      className="min-h-screen bg-[#0F0F0F] px-4 py-12 md:px-6 lg:px-8"
-    >
-      <div className="mx-auto max-w-3xl">
-        <h2 className="mb-4 text-center text-4xl font-medium text-white">
-          Preguntas frecuentes
-        </h2>
-        <p className="mb-12 text-center text-base text-zinc-500">Resolvemos tus dudas sobre nuestras laptops reacondicionadas y el proceso de compra.</p>
-        <p className="mb-12 text-center text-base text-zinc-500">
-          ¿Tenes alguna duda? Contactanos en{" "}
-          <a
-            href="https://www.instagram.com/revivox.uy/"
-            target="_blank"
-            className="text-zinc-200 hover:text-white underline"
-          >
-            Instagram
-          </a>{" "}
-          o por{" "}
-          <a
-            href="mailto:revivox@gmail.com"
-            target="_blank"
-            className="text-zinc-200 hover:text-white underline"
-          >
-            email
-          </a>
-          .
-        </p>
-
-        <div className="space-y-[2px]">
-          {faqs.map((faq: FAQItem, index: number) => (
-            <div key={index} className="overflow-hidden">
-              <button
-                onClick={() => toggleQuestion(index)}
-                className="flex w-full items-center justify-between bg-zinc-900/50 px-6 py-4 text-left transition-colors hover:bg-zinc-900"
-              >
-                <span className="text-[16px] font-medium text-white">
-                  {faq.question}
-                </span>
-                <span className="ml-6 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-700">
-                  <PlusIcon
-                    className={`h-3 w-3 text-white transition-transform duration-200 ${openIndex === index ? "rotate-45" : ""}`}
-                  />
-                </span>
-              </button>
-              <div
-                className={`grid transition-all duration-200 ease-in-out ${
-                  openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <div className="bg-zinc-900/30 px-6 py-4 text-base text-zinc-400">
-                    {faq.answer}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PlusIcon({ className = "" }) {
+/**
+ * Componente que muestra un ícono de más/menos
+ * @component
+ */
+const PlusIcon = memo(({ className = "" }: { className?: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +54,7 @@ function PlusIcon({ className = "" }) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={className}
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
@@ -129,4 +63,124 @@ function PlusIcon({ className = "" }) {
       />
     </svg>
   );
-}
+});
+
+PlusIcon.displayName = 'PlusIcon';
+
+/**
+ * Componente que muestra una pregunta y respuesta individual
+ * @component
+ */
+const FAQItem = memo(({ 
+  faq, 
+  isOpen, 
+  onToggle 
+}: { 
+  faq: FAQItem; 
+  isOpen: boolean; 
+  onToggle: () => void;
+}) => {
+  return (
+    <div className="overflow-hidden">
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center justify-between bg-zinc-900/50 px-6 py-4 text-left transition-colors hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#FF8806] focus:ring-offset-2 focus:ring-offset-[#0F0F0F]"
+        aria-expanded={isOpen}
+        aria-controls={`faq-${faq.question}`}
+      >
+        <span className="text-[16px] font-medium text-white">
+          {faq.question}
+        </span>
+        <span className="ml-6 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-700">
+          <PlusIcon
+            className={`h-3 w-3 text-white transition-transform duration-200 ${
+              isOpen ? "rotate-45" : ""
+            }`}
+          />
+        </span>
+      </button>
+      <div
+        id={`faq-${faq.question}`}
+        className={`grid transition-all duration-200 ease-in-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+        role="region"
+        aria-hidden={!isOpen}
+      >
+        <div className="overflow-hidden">
+          <div className="bg-zinc-900/30 px-6 py-4 text-base text-zinc-400">
+            {faq.answer}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+FAQItem.displayName = 'FAQItem';
+
+/**
+ * Componente que muestra la sección de preguntas frecuentes
+ * @component
+ */
+const FAQ = memo(() => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleQuestion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section
+      id="faq"
+      className="bg-[#0F0F0F] px-4 py-12 md:px-6 lg:px-8"
+      aria-labelledby="faq-title"
+    >
+      <div className="mx-auto max-w-3xl">
+        <h2 
+          id="faq-title"
+          className="mb-4 text-center text-4xl font-medium text-white"
+        >
+          Preguntas frecuentes
+        </h2>
+        <p className="mb-12 text-center text-base text-zinc-500">
+          Resolvemos tus dudas sobre nuestras laptops reacondicionadas y el proceso de compra.
+        </p>
+        <p className="mb-12 text-center text-base text-zinc-500">
+          ¿Tenes alguna duda? Contactanos en{" "}
+          <Link
+            href="https://www.instagram.com/revivox.uy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-200 hover:text-white underline"
+          >
+            Instagram
+          </Link>{" "}
+          o por{" "}
+          <Link
+            href="mailto:revivox@gmail.com"
+            className="text-zinc-200 hover:text-white underline"
+          >
+            email
+          </Link>
+          .
+        </p>
+
+        <div className="space-y-[2px]" role="list">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              faq={faq}
+              isOpen={openIndex === index}
+              onToggle={() => toggleQuestion(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+});
+
+FAQ.displayName = 'FAQ';
+
+export default FAQ;
