@@ -10,4 +10,12 @@ export interface Product {
   updated_at: string;
 }
 
-export type ProductType = 'todos' | 'laptops' | 'minipc' | 'accessories' | 'vendidos'; 
+export type ProductType = 'todos' | 'laptops' | 'minipc' | 'accessories' | 'vendidos';
+
+export type SortOrder = 'asc' | 'desc';
+export type SortField = 'price' | 'created_at' | 'name';
+
+export interface SortOptions {
+  field: SortField;
+  order: SortOrder;
+} 

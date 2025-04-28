@@ -3,15 +3,36 @@
 import { Product, ProductType } from '../types';
 import ProductCard from './ProductCard';
 import { motion, AnimatePresence } from 'framer-motion';
+import Pagination from './Pagination';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface AnimatedProductsProps {
   products: Product[];
   hasMore: boolean;
   type: ProductType;
   page: number;
+  totalProducts: number;
+  itemsPerPage: number;
 }
 
-export default function AnimatedProducts({ products, hasMore, type, page }: AnimatedProductsProps) {
+export default function AnimatedProducts({ products, hasMore, type, page, totalProducts, itemsPerPage }: AnimatedProductsProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const totalPages = Math.max(1, Math.ceil(totalProducts / itemsPerPage));
+
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', String(newPage - 1)); // query param es base 0
+    router.push(`/catalogo?${params.toString()}`);
+  };
+
+  const handleItemsPerPageChange = (newItems: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('itemsPerPage', String(newItems));
+    params.set('page', '0'); // reset page
+    router.push(`/catalogo?${params.toString()}`);
+  };
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -46,28 +67,13 @@ export default function AnimatedProducts({ products, hasMore, type, page }: Anim
         </motion.div>
       )}
 
-      {hasMore && (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mt-8 space-x-4"
-        >
-          <a
-            href={`/catalogo?type=${type}&page=${page - 1}`}
-            className={`px-4 py-2 bg-primary text-white rounded ${
-              page === 0 ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-          >
-            Anterior
-          </a>
-          <a
-            href={`/catalogo?type=${type}&page=${page + 1}`}
-            className="px-4 py-2 bg-primary text-white rounded"
-          >
-            Siguiente
-          </a>
-        </motion.div>
-      )}
+      <Pagination
+        currentPage={page + 1}
+        totalPages={totalPages}
+        itemsPerPage={itemsPerPage}
+        onPageChange={handlePageChange}
+        onItemsPerPageChange={handleItemsPerPageChange}
+      />
     </>
   );
 } 

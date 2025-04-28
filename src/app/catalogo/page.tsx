@@ -1,26 +1,35 @@
 import { createClient } from '@/lib/supabase/server';
-import { Product, ProductType } from './types';
+import { Product, ProductType, SortOptions } from './types';
 import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
 import { Suspense } from 'react';
 import AnimatedProducts from './components/AnimatedProducts';
 import Navigation from '@/components/Navigation';
 
-const ITEMS_PER_PAGE = 12;
-
-async function getProducts(page: number = 0, type: ProductType = 'todos'): Promise<{
+async function getProducts(
+  page: number = 0, 
+  itemsPerPage: number = 12,
+  type: ProductType = 'todos',
+  sortOptions: SortOptions = { field: 'price', order: 'desc' },
+  searchQuery?: string
+): Promise<{
   products: Product[];
   hasMore: boolean;
+  totalProducts: number;
 }> {
   const supabase = await createClient();
   
-  const from = page * ITEMS_PER_PAGE;
-  const to = from + ITEMS_PER_PAGE - 1;
+  const from = page * itemsPerPage;
+  const to = from + itemsPerPage - 1;
 
   let query = supabase
     .from('products')
     .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false });
+    .order(sortOptions.field, { ascending: sortOptions.order === 'asc' });
+
+  if (searchQuery) {
+    query = query.ilike('name', `%${searchQuery}%`);
+  }
 
   if (type === 'vendidos') {
     query = query.eq('sold', true);
@@ -42,7 +51,8 @@ async function getProducts(page: number = 0, type: ProductType = 'todos'): Promi
 
   return {
     products: data as Product[],
-    hasMore: count ? from + ITEMS_PER_PAGE < count : false
+    hasMore: count ? from + itemsPerPage < count : false,
+    totalProducts: count || 0,
   };
 }
 
@@ -53,24 +63,49 @@ function CatalogContent({
 }) {
   const type = (searchParams.type as ProductType) || 'todos';
   const page = parseInt(searchParams.page as string) || 0;
+  const sortField = (searchParams.sortField as SortOptions['field']) || 'price';
+  const sortOrder = (searchParams.sortOrder as SortOptions['order']) || 'desc';
+  const search = searchParams.search as string;
+  const itemsPerPage = parseInt(searchParams.itemsPerPage as string) || 12;
 
   return (
     <>
       <Navigation variant="catalog" />
       <div className="container mx-auto px-4 py-8 mt-16">
         <h1 className="text-3xl font-bold mb-8">Catálogo de Productos</h1>
-        <ProductFilters />
+        <ProductFilters 
+          currentType={type}
+          sortOptions={{ field: sortField, order: sortOrder }}
+        />
         
         <Suspense fallback={<CatalogSkeleton />}>
-          <CatalogProducts type={type} page={page} />
+          <CatalogProducts 
+            type={type} 
+            page={page} 
+            sortOptions={{ field: sortField, order: sortOrder }}
+            searchQuery={search}
+            itemsPerPage={itemsPerPage}
+          />
         </Suspense>
       </div>
     </>
   );
 }
 
-async function CatalogProducts({ type, page }: { type: ProductType; page: number }) {
-  const { products, hasMore } = await getProducts(page, type);
+async function CatalogProducts({ 
+  type, 
+  page,
+  sortOptions,
+  searchQuery,
+  itemsPerPage
+}: { 
+  type: ProductType; 
+  page: number;
+  sortOptions: SortOptions;
+  searchQuery?: string;
+  itemsPerPage: number;
+}) {
+  const { products, hasMore, totalProducts } = await getProducts(page, itemsPerPage, type, sortOptions, searchQuery);
 
   return (
     <AnimatedProducts 
@@ -78,6 +113,8 @@ async function CatalogProducts({ type, page }: { type: ProductType; page: number
       hasMore={hasMore} 
       type={type} 
       page={page} 
+      totalProducts={totalProducts}
+      itemsPerPage={itemsPerPage}
     />
   );
 }
