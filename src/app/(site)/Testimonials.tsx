@@ -87,14 +87,14 @@ const TestimonialsPage = memo(() => {
   return (
     <section
       id="testimonios"
-      className="min-h-screen bg-[#0F0F0F] text-white px-4 py-16"
+      className=" bg-[#0F0F0F] text-white px-4 py-16"
       aria-labelledby="testimonios-title"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 
             id="testimonios-title"
-            className="text-4xl font-medium mb-4"
+            className="text-4xl md:text-5xl font-medium mb-4"
           >
             Lo que dicen nuestros clientes
           </h2>
