@@ -1,38 +1,67 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function AboutUs() {
+const TEAM_MEMBERS = {
+  agustin: 'Agustín',
+  lucas: 'Lucas'
+} as const;
+
+const SOCIAL_LINKS = {
+  linkedin: {
+    href: '#',
+    label: 'LinkedIn'
+  },
+  twitter: {
+    href: '#',
+    label: 'Twitter'
+  }
+} as const;
+
+const AboutUs = () => {
   return (
-    <div id="nosotros" className="bg-[#212121] py-16">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold text-white text-center mb-12">
+    <section 
+      id="nosotros" 
+      className="bg-[#212121] py-16"
+      aria-labelledby="about-us-title"
+    >
+      <div className="max-w-2xl mx-auto px-4">
+        <h2 
+          id="about-us-title"
+          className="text-3xl font-bold text-white text-center mb-12"
+        >
           Conoce al equipo detrás de RevivoX
         </h2>
         
         <div className="relative w-full h-[500px] mb-12">
           <Image
             src="https://images.unsplash.com/photo-1603861868946-cafb303e0387?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Equipo RevivoX"
+            alt="Equipo RevivoX trabajando en el reacondicionamiento de laptops"
             fill
             className="object-cover rounded-lg"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
 
         <div className="text-center mb-12">
           <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
-            Somos <span className="font-bold">Agustín</span> y <span className="font-bold">Lucas</span>, dos estudiantes de informática apasionados por la tecnología y el medio ambiente. 
+            Somos <span className="font-bold">{TEAM_MEMBERS.agustin}</span> y{' '}
+            <span className="font-bold">{TEAM_MEMBERS.lucas}</span>, dos estudiantes de informática apasionados por la tecnología y el medio ambiente. 
             Fundamos RevivoX con la misión de dar una segunda vida a laptops, combinando innovación, sostenibilidad y accesibilidad en todo Uruguay. 
             Nuestro objetivo es reducir el impacto ambiental de la tecnología, ofreciendo equipos reacondicionados de alta calidad que se adaptan a las necesidades actuales.
           </p>
         </div>
 
         <div className="flex justify-center gap-8">
-          <a href="#" className="text-[#FF8806] hover:text-[#ffa039] text-lg">
-            LinkedIn
-          </a>
-          <a href="#" className="text-[#FF8806] hover:text-[#ffa039] text-lg">
-            Twitter
-          </a>
+          {Object.values(SOCIAL_LINKS).map(({ href, label }) => (
+            <Link
+              key={label}
+              href={href}
+              className="text-[#FF8806] hover:text-[#ffa039] text-lg transition-colors duration-200"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
         <div className="mt-12 text-center">
@@ -43,6 +72,8 @@ export default function AboutUs() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
-} 
+};
+
+export default AboutUs; 
