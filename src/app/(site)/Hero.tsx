@@ -90,7 +90,7 @@ const HeroSection = () => {
           <div className="mt-6 flex flex-col sm:flex-row gap-4 sm:justify-center">
             <Link
               href="/catalogo?type=laptops"
-              className="inline-flex w-8/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-[#FF8806] hover:bg-[#ffa039] text-black px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
+              className="inline-flex w-10/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-[#FF8806] hover:bg-[#ffa039] text-black px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
               aria-label="Ver laptops disponibles"
             >
               Ver laptops disponibles <MoveRight className="w-5 h-5" aria-hidden="true" />
@@ -99,7 +99,7 @@ const HeroSection = () => {
               href="https://ig.me/m/revivox.uy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-6/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-transparent border border-[#FF8806] hover:border-[#321B01] hover:bg-[#321B01] text-white px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
+              className="inline-flex w-8/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-transparent border border-[#FF8806] hover:border-[#321B01] hover:bg-[#321B01] text-white px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
               aria-label="Contactar con RevivoX"
             >
               Escríbenos &nbsp;
