@@ -4,6 +4,7 @@ import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
 import { Suspense } from 'react';
 import AnimatedProducts from './components/AnimatedProducts';
+import Navigation from '@/components/Navigation';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -54,14 +55,17 @@ function CatalogContent({
   const page = parseInt(searchParams.page as string) || 0;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Catálogo de Productos</h1>
-      <ProductFilters />
-      
-      <Suspense fallback={<CatalogSkeleton />}>
-        <CatalogProducts type={type} page={page} />
-      </Suspense>
-    </div>
+    <>
+      <Navigation variant="catalog" />
+      <div className="container mx-auto px-4 py-8 mt-16">
+        <h1 className="text-3xl font-bold mb-8">Catálogo de Productos</h1>
+        <ProductFilters />
+        
+        <Suspense fallback={<CatalogSkeleton />}>
+          <CatalogProducts type={type} page={page} />
+        </Suspense>
+      </div>
+    </>
   );
 }
 
