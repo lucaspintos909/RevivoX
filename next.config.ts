@@ -16,6 +16,16 @@ const nextConfig = {
         hostname: 'msythrtpwmlfwzsdwqik.supabase.co',
         pathname: '/storage/v1/object/public/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'static.xx.fbcdn.net',
+        pathname: '/rsrc.php/yz/r/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.xx.fbcdn.net',
+        pathname: '/rsrc.php/v4/yx/r/**',
+      },
     ],
   },
   async headers() {
