@@ -104,14 +104,14 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
   const defaultLinks: NavLink[] = [
     { href: "/catalogo?type=laptops", label: "Laptops" },
     { href: "#faq", label: "Preguntas frecuentes" },
-    { href: "#testimonios", label: "Reseñas" },
+    { href: "#wall-of-love", label: "Reseñas" },
     { href: "#nosotros", label: "Nosotros" },
   ];
 
   const catalogLinks: NavLink[] = [
     { href: "/", label: "Home" },
     { href: "/#faq", label: "Preguntas frecuentes" },
-    { href: "/#testimonios", label: "Reseñas" },
+    { href: "/#wall-of-love", label: "Reseñas" },
     { href: "/#nosotros", label: "Nosotros" },
   ];
 
