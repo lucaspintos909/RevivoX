@@ -5,6 +5,7 @@ import Link from "next/link";
 import Typewriter from 'typewriter-effect';
 import { MoveRight, ShieldCheck } from 'lucide-react';
 import { Feature } from '@/components/Feature';
+import InstagramIcon from '@/components/icons/InstagramIcon';
 
 const TYPEWRITER_STRINGS = [
   'Garantía de calidad.',
@@ -94,11 +95,14 @@ const HeroSection = () => {
               Ver laptops disponibles <MoveRight className="w-5 h-5" aria-hidden="true" />
             </Link>
             <Link
-              href="#contacto"
+              href="https://ig.me/m/revivox.uy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-transparent border border-[#FF8806] hover:bg-[#FF8806] hover:text-black text-white px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
               aria-label="Contactar con RevivoX"
             >
-              Escríbenos
+              Escríbenos &nbsp;
+              <InstagramIcon />
             </Link>
             <ShieldCheck 
               color="#5cb85c" 
