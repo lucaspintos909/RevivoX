@@ -133,7 +133,7 @@ const FAQ = memo(() => {
   return (
     <section
       id="faq"
-      className="bg-[#0F0F0F] px-4 py-12 md:px-6 lg:px-8"
+      className="bg-[#0F0F0F] px-4 py-16 md:px-6 lg:px-8"
       aria-labelledby="faq-title"
     >
       <div className="mx-auto max-w-3xl">
