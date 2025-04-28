@@ -34,7 +34,7 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
   };
 
   return (
-    <>
+    <div className="min-h-[60vh] flex flex-col justify-between">
       <AnimatePresence mode="wait">
         <motion.div
           key={`products-${type}-${page}`}
@@ -74,6 +74,6 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
         onPageChange={handlePageChange}
         onItemsPerPageChange={handleItemsPerPageChange}
       />
-    </>
+    </div>
   );
 } 

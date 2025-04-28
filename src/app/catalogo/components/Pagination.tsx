@@ -36,7 +36,7 @@ export function Pagination({
   };
 
   return (
-    <div className="relative border-t pt-4 mt-4 min-h-[56px] flex items-center">
+    <div className="relative border-t pt-4 mt-16 min-h-[56px] flex items-center">
       {/* Selector a la derecha */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2">
         <span className="text-sm font-medium text-gray-700">Items por página</span>
