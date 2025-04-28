@@ -24,10 +24,10 @@ const AboutUs = () => {
       className="bg-[#212121] py-16"
       aria-labelledby="about-us-title"
     >
-      <div className="max-w-2xl mx-auto px-4">
+      <div className="max-w-2xl md:max-w-3xl mx-auto px-4">
         <h2 
           id="about-us-title"
-          className="text-3xl font-bold text-white text-center mb-12"
+          className="text-4xl md:text-5xl font-bold text-white text-center mb-12"
         >
           Conoce al equipo detrás de RevivoX
         </h2>
@@ -47,7 +47,7 @@ const AboutUs = () => {
           <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
             Somos <span className="font-bold">{TEAM_MEMBERS.agustin}</span> y{' '}
             <span className="font-bold">{TEAM_MEMBERS.lucas}</span>, dos estudiantes de informática apasionados por la tecnología y el medio ambiente. 
-            Fundamos RevivoX con la misión de dar una segunda vida a laptops, combinando innovación, sostenibilidad y accesibilidad en todo Uruguay. 
+            Fundamos <span className="font-bold">RevivoX</span> con el objetivo de dar una segunda vida a laptops, combinando innovación, sostenibilidad y accesibilidad en todo Uruguay. 
             Nuestro objetivo es reducir el impacto ambiental de la tecnología, ofreciendo equipos reacondicionados de alta calidad que se adaptan a las necesidades actuales.
           </p>
         </div>
