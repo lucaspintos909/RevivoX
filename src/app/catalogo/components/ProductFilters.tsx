@@ -14,8 +14,8 @@ const filterOptions: { value: ProductType; label: string }[] = [
 ];
 
 const sortOptions: { value: SortOrder; label: string }[] = [
-  { value: 'asc', label: 'Menor Precio' },
-  { value: 'desc', label: 'Mayor Precio' },
+  { value: 'asc', label: 'Menor Precio ↓' },
+  { value: 'desc', label: 'Mayor Precio ↑' },
 ];
 
 interface ProductFiltersProps {
@@ -47,22 +47,24 @@ export default function ProductFilters({ currentType, sortOptions: currentSortOp
     router.push(`/catalogo?${params.toString()}`);
   };
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent, reset: boolean = false) => {
     e.preventDefault();
     const params = new URLSearchParams(searchParams.toString());
-    if (searchQuery.trim()) {
-      params.set('search', searchQuery.trim());
-    } else {
+    console.log(searchQuery);
+    
+    if (reset) {
       params.delete('search');
+    } else {
+      params.set('search', searchQuery.trim());
     }
     params.set('page', '0');
     router.push(`/catalogo?${params.toString()}`);
   };
 
-  const handleClearSearch = (e: React.FormEvent) => {
+  const handleClearSearch = async(e: React.FormEvent) => {
     e.preventDefault();
     setSearchQuery('');
-    handleSearch(e);
+    handleSearch(e, true);
   };
 
   return (
