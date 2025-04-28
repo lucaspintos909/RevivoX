@@ -1,7 +1,10 @@
+"use client";
+
 import { Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { memo } from "react";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   name: string;
@@ -45,11 +48,27 @@ const TestimonialCard = memo(({ testimonial }: { testimonial: Testimonial }) => 
       <div className="flex-grow">
         <div className="flex gap-1 mb-4" aria-label={`${testimonial.rating} estrellas`}>
           {[...Array(testimonial.rating)].map((_, i) => (
-            <Star
+            <motion.div
               key={i}
-              className="w-4 h-4 fill-yellow-400 text-yellow-400"
-              aria-hidden="true"
-            />
+              animate={{
+                scale: [1, 1.2, 1],
+                transition: {
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 1
+                }
+              }}
+              whileHover={{
+                rotate: 15,
+                scale: 1.2,
+                transition: { duration: 0.2 }
+              }}
+            >
+              <Star
+                className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                aria-hidden="true"
+              />
+            </motion.div>
           ))}
         </div>
 
@@ -86,7 +105,7 @@ TestimonialCard.displayName = 'TestimonialCard';
 const TestimonialsPage = memo(() => {
   return (
     <section
-      id="testimonios"
+      id="wall-of-love"
       className=" bg-[#0F0F0F] text-white px-4 py-16"
       aria-labelledby="testimonios-title"
     >

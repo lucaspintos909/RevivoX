@@ -6,6 +6,7 @@ import Typewriter from 'typewriter-effect';
 import { MoveRight, ShieldCheck } from 'lucide-react';
 import { Feature } from '@/components/Feature';
 import InstagramIcon from '@/components/icons/InstagramIcon';
+import { motion } from 'framer-motion';
 
 const TYPEWRITER_STRINGS = [
   'Garantía de calidad.',
@@ -104,19 +105,37 @@ const HeroSection = () => {
               Escríbenos &nbsp;
               <InstagramIcon />
             </Link>
-            <ShieldCheck 
-              color="#5cb85c" 
-              className="mx-auto sm:my-auto sm:mx-0" 
-              aria-hidden="true"
-            />
           </div>
         </div>
 
         <div className="w-full lg:w-2/5 flex justify-center lg:justify-end">
-          <div className="max-w-md mx-auto">
+          <motion.div 
+            className="max-w-md mx-auto"
+            animate={{
+              boxShadow: [
+                "0 0 0 0 rgba(16, 185, 129, 0.4)",
+                "0 0 0 10px rgba(16, 185, 129, 0)",
+                "0 0 0 0 rgba(16, 185, 129, 0.4)"
+              ],
+              borderRadius: [
+                "12px",
+                "12px",
+                "12px"
+              ]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
             <div className="rounded-xl bg-zinc-800 p-6 border border-green-500/50 relative">
-              <div className="absolute -top-3 right-6 bg-green-500 text-black text-sm font-semibold px-3 py-1 rounded-full">
-                RevivoX
+              <div className="inline-flex items-center gap-1 absolute -top-3 right-6 bg-green-500 text-black text-sm font-semibold px-3 py-1 rounded-full">
+                RevivoX 
+                <ShieldCheck 
+                  className="w-4 h-4" 
+                  aria-hidden="true"
+                />
               </div>
               <h2 className="text-2xl font-semibold mb-4 text-zinc-300">
                 Beneficios de Comprar Reacondicionado
@@ -144,7 +163,7 @@ const HeroSection = () => {
                 Compra con la tranquilidad que mereces.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
