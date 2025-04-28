@@ -139,7 +139,7 @@ const FAQ = memo(() => {
       <div className="mx-auto max-w-3xl">
         <h2 
           id="faq-title"
-          className="mb-4 text-center text-4xl font-medium text-white"
+          className="mb-4 text-center text-4xl md:text-5xl font-medium text-white"
         >
           Preguntas frecuentes
         </h2>
