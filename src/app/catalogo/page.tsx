@@ -119,7 +119,7 @@ async function CatalogProducts({
   );
 }
 
-export default function CatalogPage({
+export default async function CatalogPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };

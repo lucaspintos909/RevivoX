@@ -5,6 +5,7 @@ import ProductCard from './ProductCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import Pagination from './Pagination';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface AnimatedProductsProps {
   products: Product[];
@@ -19,14 +20,21 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
   const router = useRouter();
   const searchParams = useSearchParams();
   const totalPages = Math.max(1, Math.ceil(totalProducts / itemsPerPage));
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [products]);
 
   const handlePageChange = (newPage: number) => {
+    setIsLoading(true);
     const params = new URLSearchParams(searchParams.toString());
     params.set('page', String(newPage - 1)); // query param es base 0
     router.push(`/catalogo?${params.toString()}`);
   };
 
   const handleItemsPerPageChange = (newItems: number) => {
+    setIsLoading(true);
     const params = new URLSearchParams(searchParams.toString());
     params.set('itemsPerPage', String(newItems));
     params.set('page', '0'); // reset page
@@ -36,28 +44,49 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
   return (
     <div className="min-h-[60vh] flex flex-col justify-between">
       <AnimatePresence mode="wait">
-        <motion.div
-          key={`products-${type}-${page}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-            >
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {isLoading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {[...Array(itemsPerPage)].map((_, index) => (
+              <motion.div
+                key={`loading-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-gray-200 rounded-lg h-[400px] animate-pulse"
+              />
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            key={`products-${type}-${page}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {products.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </AnimatePresence>
 
-      {products.length === 0 && (
+      {products.length === 0 && !isLoading && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
