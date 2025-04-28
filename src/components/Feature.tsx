@@ -1,15 +1,41 @@
 import { Check } from 'lucide-react';
-import { ReactNode } from 'react';
+import { ReactNode, memo } from 'react';
+import { cn } from '@/lib/utils';
 
-interface FeatureProps {
+/**
+ * Props para el componente Feature
+ * @interface FeatureProps
+ * @property {ReactNode} children - Contenido del feature
+ * @property {string} [className] - Clases CSS adicionales
+ */
+export interface FeatureProps {
   children: ReactNode;
+  className?: string;
 }
 
-export const Feature = ({ children }: FeatureProps) => {
+/**
+ * Componente que muestra una característica con un ícono de check
+ * @component
+ * @param {FeatureProps} props - Props del componente
+ * @returns {JSX.Element} Componente Feature
+ */
+export const Feature = memo(({ children, className }: FeatureProps) => {
   return (
-    <div className="flex items-start gap-3">
-      <Check className="w-5 h-5 text-green-500 flex-shrink-0" aria-hidden="true" />
+    <div 
+      className={cn(
+        "flex items-start gap-3",
+        className
+      )}
+      role="listitem"
+    >
+      <Check 
+        className="w-5 h-5 text-green-500 flex-shrink-0" 
+        aria-hidden="true"
+        role="img"
+      />
       <span className="text-zinc-300">{children}</span>
     </div>
   );
-}; 
+});
+
+Feature.displayName = 'Feature'; 
