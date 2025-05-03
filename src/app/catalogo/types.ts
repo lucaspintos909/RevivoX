@@ -7,6 +7,26 @@ export interface Product {
   sold: boolean;
   discount: number;
   type: 'laptop' | 'services' | 'accessory' | 'other';
+  specs: {
+    processor: string;
+    ram: string;
+    storage: string;
+    display: string;
+    os: string;
+    condition: string;
+    extras: {
+      fingerprint: boolean;
+      facialRecognition: boolean;
+      backlitKeyboard: boolean;
+      touchScreen: boolean;
+      thunderbolt: boolean;
+      hdmi: boolean;
+      usbC: boolean;
+      webcam: boolean;
+      bluetooth: boolean;
+      wifi6: boolean;
+    };
+  };
   created_at: string;
   updated_at: string;
 }

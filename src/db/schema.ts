@@ -1,4 +1,4 @@
-import { integer, pgTable, varchar, text, decimal, boolean, timestamp, uuid } from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar, text, decimal, boolean, timestamp, uuid, jsonb } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -16,6 +16,26 @@ export const products = pgTable('products', {
   discount: decimal('discount', { precision: 10, scale: 2 }).notNull(),
   sold: boolean('sold').default(false),
   type: text('type', { enum: ['laptop', 'minipc', 'accessory', 'other'] }).notNull().default('laptop'),
+  specs: jsonb('specs').default({
+    processor: '',
+    ram: '',
+    storage: '',
+    display: '',
+    os: '',
+    condition: 'Reacondicionado',
+    extras: {
+      fingerprint: false,
+      facialRecognition: false,
+      backlitKeyboard: false,
+      touchScreen: false,
+      thunderbolt: false,
+      hdmi: false,
+      usbC: false,
+      webcam: false,
+      bluetooth: false,
+      wifi6: false
+    }
+  }),
   created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
   updated_at: timestamp('updated_at', { withTimezone: true }).defaultNow()
 });
