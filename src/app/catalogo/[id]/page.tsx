@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { Product } from '../types';
 import Navigation from '@/components/Navigation';
-import AnimatedProductDetail from '../components/AnimatedProductDetail';
+import ProductDetail from '../components/ProductDetail';
 
 async function getProduct(id: string): Promise<Product | null> {
   const supabase = await createClient();
@@ -20,7 +20,7 @@ async function getProduct(id: string): Promise<Product | null> {
   return data as Product;
 }
 
-export default async function ProductDetail({
+export default async function ProductDetailPage({
   params,
 }: {
   params: { id: string };
@@ -44,7 +44,7 @@ export default async function ProductDetail({
   return (
     <>
       <Navigation variant="catalog" />
-      <AnimatedProductDetail product={product} />
+      <ProductDetail product={product} />
     </>
   );
 } 
