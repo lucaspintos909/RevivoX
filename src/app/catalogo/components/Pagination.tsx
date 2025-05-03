@@ -36,22 +36,9 @@ export function Pagination({
   };
 
   return (
-    <div className="relative border-t pt-4 mt-16 min-h-[56px] flex items-center">
-      {/* Selector a la derecha */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-2">
-        <span className="text-sm font-medium text-gray-700">Items por página</span>
-        <select
-          value={itemsPerPage}
-          onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-          className="border rounded-md px-2 py-1 text-sm focus:outline-none"
-        >
-          {itemsPerPageOptions.map((opt) => (
-            <option key={opt} value={opt}>{opt}</option>
-          ))}
-        </select>
-      </div>
+    <div className="border-t pt-4 mt-16 min-h-[56px] flex flex-col gap-4 sm:gap-0 sm:relative">
       {/* Paginación centrada */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2">
+      <div className="flex items-center justify-center gap-2">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -81,6 +68,20 @@ export function Pagination({
         >
           <MoveRight className="w-4" />
         </button>
+      </div>
+
+      {/* Selector de items por página */}
+      <div className="flex items-center justify-center gap-2 sm:absolute sm:right-0 sm:top-1/2 sm:-translate-y-1/2">
+        <span className="text-sm font-medium text-gray-700">Items por página</span>
+        <select
+          value={itemsPerPage}
+          onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+          className="border rounded-md px-2 py-1 text-sm focus:outline-none"
+        >
+          {itemsPerPageOptions.map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          ))}
+        </select>
       </div>
     </div>
   );
