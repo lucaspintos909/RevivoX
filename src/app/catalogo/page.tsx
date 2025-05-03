@@ -3,7 +3,7 @@ import { Product, ProductType, SortOptions } from './types';
 import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
 import { Suspense } from 'react';
-import AnimatedProducts from './components/AnimatedProducts';
+import ProductList from './components/ProductList';
 import Navigation from '@/components/Navigation';
 
 async function getProducts(
@@ -108,7 +108,7 @@ async function CatalogProducts({
   const { products, totalProducts } = await getProducts(page, itemsPerPage, type, sortOptions, searchQuery);
 
   return (
-    <AnimatedProducts 
+    <ProductList 
       products={products} 
       type={type} 
       page={page} 

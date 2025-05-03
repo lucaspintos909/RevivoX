@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-interface AnimatedProductsProps {
+interface ProductListProps {
   products: Product[];
   type: ProductType;
   page: number;
@@ -15,7 +15,7 @@ interface AnimatedProductsProps {
   itemsPerPage: number;
 }
 
-export default function AnimatedProducts({ products, type, page, totalProducts, itemsPerPage }: AnimatedProductsProps) {
+export default function ProductList({ products, type, page, totalProducts, itemsPerPage }: ProductListProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const totalPages = Math.max(1, Math.ceil(totalProducts / itemsPerPage));
