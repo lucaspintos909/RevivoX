@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import Typewriter from 'typewriter-effect';
-import { MoveRight, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import { Feature } from '@/components/Feature';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { motion } from 'framer-motion';
@@ -83,23 +83,24 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-base text-[#CFCFCF] mb-8 max-w-2xl mx-auto lg:mx-0">
-            En <strong>RevivoX</strong> damos nueva vida a laptops usadas.
+            En <strong>RevivoX</strong> damos nueva vida a laptops reacondicionadas.
+            <br />
             Con garantía, sustentables, <span className='underline underline-offset-4 decoration-[#FF8806]'>ideales para estudiantes</span> y listas para usar desde el primer día.
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row gap-4 sm:justify-center">
             <Link
               href="/catalogo?type=laptops"
-              className="inline-flex w-10/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-[#FF8806] hover:bg-[#ffa039] text-black px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
+              className="inline-flex w-10/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-[#FF8806] hover:bg-[#ffa039] text-black px-8 py-2 rounded-xl font-medium text-lg transition-colors duration-300"
               aria-label="Ver laptops disponibles"
             >
-              Ver laptops disponibles <MoveRight className="w-5 h-5" aria-hidden="true" />
+              Ver laptops disponibles
             </Link>
             <Link
               href="https://ig.me/m/revivox.uy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-8/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-transparent border border-[#FF8806] hover:border-[#321B01] hover:bg-[#321B01] text-white px-8 py-3 rounded-xl font-medium text-lg transition-colors duration-300"
+              className="inline-flex w-8/12 mx-auto sm:w-auto items-center justify-center gap-2 bg-transparent border border-[#FF8806] hover:border-[#321B01] hover:bg-[#321B01] text-white px-8 py-2 rounded-xl font-medium text-lg transition-colors duration-300"
               aria-label="Contactar con RevivoX"
             >
               Escríbenos &nbsp;
