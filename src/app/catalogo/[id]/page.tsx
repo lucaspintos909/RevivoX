@@ -155,7 +155,7 @@ export default async function ProductDetail({
                     <span className="text-sm text-gray-500">Contactar por</span>
                     <div className="flex flex-col sm:flex-row gap-2">
                       <a
-                        href="https://www.instagram.com/revivox"
+                        href="https://www.instagram.com/revivox.uy"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-opacity"
@@ -164,7 +164,7 @@ export default async function ProductDetail({
                         <span>Instagram</span>
                       </a>
                       <a
-                        href="https://wa.me/549XXXXXXXXXX"
+                        href="https://wa.me/598XXXXXXXXXX"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white rounded-lg hover:opacity-90 transition-opacity"
