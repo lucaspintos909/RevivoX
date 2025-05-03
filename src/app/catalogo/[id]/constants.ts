@@ -13,21 +13,52 @@ import {
   Usb,
   Video,
   Bluetooth,
-  Wifi
+  Wifi,
+  LucideIcon
 } from 'lucide-react';
 
+interface TechnicalSpec {
+  key: keyof {
+    processor: string;
+    ram: string;
+    storage: string;
+    display: string;
+    os: string;
+    condition: string;
+  };
+  icon: LucideIcon;
+  label: string;
+}
+
+interface ExtraFeature {
+  key: keyof {
+    fingerprint: boolean;
+    facialRecognition: boolean;
+    backlitKeyboard: boolean;
+    touchScreen: boolean;
+    thunderbolt: boolean;
+    hdmi: boolean;
+    usbC: boolean;
+    webcam: boolean;
+    bluetooth: boolean;
+    wifi6: boolean;
+  };
+  icon: LucideIcon;
+  label: string;
+}
+
 // Constantes para las especificaciones técnicas
-export const TECHNICAL_SPECS = [
+export const TECHNICAL_SPECS: TechnicalSpec[] = [
   { key: 'processor', icon: Cpu, label: 'Procesador' },
   { key: 'ram', icon: MemoryStick, label: 'Memoria RAM' },
   { key: 'storage', icon: HardDrive, label: 'Almacenamiento' },
   { key: 'display', icon: MonitorSmartphone, label: 'Pantalla' },
   { key: 'os', icon: Laptop, label: 'Sistema operativo' },
   { key: 'condition', icon: CheckCircle, label: 'Estado' }
-] as const;
+];
 
 // Constantes para las características adicionales
-export const EXTRA_FEATURES = [
+export const EXTRA_FEATURES: ExtraFeature[] = [
   { key: 'fingerprint', icon: Fingerprint, label: 'Lector de huella' },
   { key: 'facialRecognition', icon: ScanFace, label: 'Reconocimiento facial' },
   { key: 'backlitKeyboard', icon: Keyboard, label: 'Teclado retroiluminado' },
@@ -38,4 +69,4 @@ export const EXTRA_FEATURES = [
   { key: 'webcam', icon: Video, label: 'Webcam' },
   { key: 'bluetooth', icon: Bluetooth, label: 'Bluetooth' },
   { key: 'wifi6', icon: Wifi, label: 'WiFi 6' }
-] as const; 
+]; 
