@@ -5,7 +5,12 @@ import { X, Menu } from "lucide-react";
 import { useState, memo } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { MuseoModerno } from "next/font/google";
 
+export const museoModerno = MuseoModerno({
+  subsets: ["latin"],
+  display: "swap",
+});
 interface NavLink {
   href: string;
   label: string;
@@ -138,6 +143,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
             className="flex items-center gap-2 focus:outline-none"
           >
             <span className={cn(
+              museoModerno.className,
               "text-4xl font-semibold",
               isCatalog ? "text-gray-900" : "text-white"
             )}>RevivoX</span>
