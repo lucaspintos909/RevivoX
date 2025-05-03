@@ -9,14 +9,13 @@ import { useEffect, useState } from 'react';
 
 interface AnimatedProductsProps {
   products: Product[];
-  hasMore: boolean;
   type: ProductType;
   page: number;
   totalProducts: number;
   itemsPerPage: number;
 }
 
-export default function AnimatedProducts({ products, hasMore, type, page, totalProducts, itemsPerPage }: AnimatedProductsProps) {
+export default function AnimatedProducts({ products, type, page, totalProducts, itemsPerPage }: AnimatedProductsProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const totalPages = Math.max(1, Math.ceil(totalProducts / itemsPerPage));
@@ -51,7 +50,7 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {[...Array(itemsPerPage)].map((_, index) => (
               <motion.div
@@ -70,7 +69,7 @@ export default function AnimatedProducts({ products, hasMore, type, page, totalP
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
             {products.map((product, index) => (
               <motion.div
