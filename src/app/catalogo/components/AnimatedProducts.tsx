@@ -69,7 +69,7 @@ export default function AnimatedProducts({ products, type, page, totalProducts, 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+            className="grid grid-cols-1 xl:grid-cols-2 gap-6"
           >
             {products.map((product, index) => (
               <motion.div
