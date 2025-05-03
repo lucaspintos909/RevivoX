@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Product } from '../types';
 import { 
   Instagram, 
@@ -17,33 +16,14 @@ import ContactButton from './ContactButton';
 import SpecItem from './SpecItem';
 import ExtraFeature from './ExtraFeature';
 import { TECHNICAL_SPECS, EXTRA_FEATURES } from '../[id]/constants';
-
-// Constantes para animaciones
-const FADE_IN = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.5 }
-};
-
-const SLIDE_UP = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
+import { FadeIn, SlideUp } from './AnimatedContainer';
 
 export default function AnimatedProductDetail({ product }: { product: Product }) {
   return (
-    <motion.div 
-      {...SLIDE_UP}
-      className="container mx-auto px-4 py-8 mt-16"
-    >
+    <SlideUp className="container mx-auto px-4 py-8 mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Sección de imágenes */}
-        <motion.div 
-          {...FADE_IN}
-          transition={{ ...FADE_IN.transition, delay: 0.2 }}
-          className="space-y-4"
-        >
+        <FadeIn delay={0.2} className="space-y-4">
           <div className="relative aspect-square w-full bg-gray-100 rounded-lg overflow-hidden">
             <Image
               src={product.image}
@@ -57,35 +37,24 @@ export default function AnimatedProductDetail({ product }: { product: Product })
           <div className="grid grid-cols-4 gap-2">
             {/* Aquí irían las miniaturas de otras imágenes si las hubiera */}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Sección de detalles */}
-        <motion.div 
-          {...FADE_IN}
-          transition={{ ...FADE_IN.transition, delay: 0.4 }}
-          className="space-y-6"
-        >
+        <FadeIn delay={0.4} className="space-y-6">
           <div>
             <div className="flex flex-wrap gap-2 mb-2">
               {Number(product.discount) > 0 && <Badge>¡Oferta!</Badge>}
               {product.sold && <Badge>Vendido</Badge>}
             </div>
-            <motion.h1 
-              {...SLIDE_UP}
-              className="text-2xl font-bold text-gray-900"
-            >
+            <SlideUp className="text-2xl font-bold text-gray-900">
               {product.name}
-            </motion.h1>
+            </SlideUp>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Única unidad disponible</span>
             </div>
           </div>
 
-          <motion.div 
-            {...FADE_IN}
-            transition={{ ...FADE_IN.transition, delay: 0.6 }}
-            className="space-y-4"
-          >
+          <FadeIn delay={0.6} className="space-y-4">
             <PriceDisplay price={product.price} discount={product.discount} />
 
             <div className="space-y-4">
@@ -163,9 +132,9 @@ export default function AnimatedProductDetail({ product }: { product: Product })
                 </div>
               </div>
             )}
-          </motion.div>
-        </motion.div>
+          </FadeIn>
+        </FadeIn>
       </div>
-    </motion.div>
+    </SlideUp>
   );
 } 
