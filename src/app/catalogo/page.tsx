@@ -35,7 +35,7 @@ async function getProducts(
     query = query.eq('sold', true);
   } else if (type !== 'todos') {
     const productType = type === 'laptops' ? 'laptop' : 
-                       type === 'minipc' ? 'minipc' : 
+                       type === 'services' ? 'services' : 
                        type === 'accessories' ? 'accessory' : 'other';
     query = query.eq('type', productType).eq('sold', false);
   } else {
@@ -72,7 +72,7 @@ function CatalogContent({
     <>
       <Navigation variant="catalog" />
       <div className="container mx-auto px-4 py-8 mt-16">
-        <h1 className="text-3xl font-bold mb-8">Catálogo de Productos</h1>
+        <h1 className="text-3xl font-bold mb-8">Nuestros productos y servicios</h1>
         <ProductFilters 
           currentType={type}
           sortOptions={{ field: sortField, order: sortOrder }}
@@ -105,12 +105,11 @@ async function CatalogProducts({
   searchQuery?: string;
   itemsPerPage: number;
 }) {
-  const { products, hasMore, totalProducts } = await getProducts(page, itemsPerPage, type, sortOptions, searchQuery);
+  const { products, totalProducts } = await getProducts(page, itemsPerPage, type, sortOptions, searchQuery);
 
   return (
     <AnimatedProducts 
       products={products} 
-      hasMore={hasMore} 
       type={type} 
       page={page} 
       totalProducts={totalProducts}

@@ -5,12 +5,13 @@ export interface Product {
   image: string;
   price: number;
   sold: boolean;
-  type: 'laptop' | 'minipc' | 'accessory' | 'other';
+  discount: number;
+  type: 'laptop' | 'services' | 'accessory' | 'other';
   created_at: string;
   updated_at: string;
 }
 
-export type ProductType = 'todos' | 'laptops' | 'minipc' | 'accessories' | 'vendidos';
+export type ProductType = 'todos' | 'laptops' | 'services' | 'accessories' | 'vendidos';
 
 export type SortOrder = 'asc' | 'desc';
 export type SortField = 'price' | 'created_at' | 'name';

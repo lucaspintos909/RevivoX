@@ -10,6 +10,7 @@ const filterOptions: { value: ProductType; label: string }[] = [
   { value: 'todos', label: 'Todos' },
   { value: 'laptops', label: 'Laptops' },
   { value: 'accessories', label: 'Accesorios' },
+  { value: 'services', label: 'Servicios' },
   { value: 'vendidos', label: 'Vendidos' },
 ];
 
