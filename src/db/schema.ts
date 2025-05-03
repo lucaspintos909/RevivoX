@@ -1,4 +1,4 @@
-import { integer, pgTable, varchar, serial, text, decimal, boolean, timestamp } from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar, text, decimal, boolean, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -8,7 +8,7 @@ export const usersTable = pgTable("users", {
 });
 
 export const products = pgTable('products', {
-  id: serial('id').primaryKey(),
+  id: uuid('id').primaryKey().defaultRandom(),
   name: text('name').notNull(),
   description: text('description').notNull(),
   image: text('image').notNull(),
@@ -36,7 +36,7 @@ export interface Database {
     Tables: {
       products: {
         Row: {
-          id: number
+          id: string
           name: string
           description: string
           image: string
@@ -46,7 +46,7 @@ export interface Database {
           created_at: string
         }
         Insert: {
-          id?: number
+          id?: string
           name: string
           description: string
           image: string
@@ -56,7 +56,7 @@ export interface Database {
           created_at?: string
         }
         Update: {
-          id?: number
+          id?: string
           name?: string
           description?: string
           image?: string
