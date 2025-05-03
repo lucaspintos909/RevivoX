@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ContentLoader from 'react-content-loader';
 import { HiOutlinePhotograph } from 'react-icons/hi';
+import { Heart, ShieldCheck } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -17,9 +18,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [isImageError, setIsImageError] = useState(false);
 
   return (
-    <Link href={`/catalogo/${product.id}`}>
-      <div className="relative group">
-        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-gray-200">
+    <Link href={`/catalogo/${product.id}`} className="block">
+      <div className="bg-white rounded-lg shadow flex flex-col md:flex-row p-4 gap-4 relative group transition hover:shadow-lg">
+        {/* Botón de favorito */}
+        <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500 z-10 bg-white rounded-full p-1 shadow-md">
+          <Heart className="w-5 h-5" />
+        </button>
+        {/* Imagen */}
+        <div className="flex-shrink-0 w-full md:w-48 h-40 flex items-center justify-center bg-gray-100 rounded overflow-hidden relative">
           {isImageLoading && !isImageError && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -46,10 +52,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               src={product.image}
               alt={product.name}
               fill
-              className={`object-cover object-center group-hover:opacity-75 transition-opacity duration-300 ${
-                isImageLoading ? 'opacity-0' : 'opacity-100'
-              }`}
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className={`object-contain object-center transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+              sizes="(max-width: 768px) 100vw, 192px"
               priority={false}
               loading="lazy"
               onLoad={() => setIsImageLoading(false)}
@@ -65,19 +69,47 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
         </div>
-        <div className="mt-4 flex justify-between">
+        {/* Detalles */}
+        <div className="flex flex-col flex-1 justify-between min-w-0">
           <div>
-            <h3 className="text-sm text-gray-700">{product.name}</h3>
-            <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+            {Number(product.discount) > 0 && (
+              <span className="inline-block mb-1 bg-red-100 text-red-700 text-xs font-bold px-2 py-0.5 rounded">
+                ¡Oferta!
+              </span>
+            )}
+            {product.sold && (
+              <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-medium">Vendido</span>
+            )}
+            <h2 className="text-lg font-bold text-gray-900 truncate pr-8">{product.name}</h2>
+            <div className="text-sm text-gray-500 mb-2 line-clamp-2">{product.description}</div>
+            {/* Etiquetas */}
+            <div className="flex flex-wrap gap-2 mb-2">
+              <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
+            </div>
           </div>
-          <p className="text-sm font-medium text-gray-900">${product.price}</p>
+          <div className="flex items-end justify-between mt-2 flex-wrap gap-2">
+            <div>
+              {product.discount && Number(product.discount) > 0 ? (
+                <>
+                  <span className="text-2xl font-bold text-gray-900 mr-2">${product.discount}</span>
+                  <span className="text-base text-red-400 line-through">${product.price}</span>
+                </>
+              ) : (
+                <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+              )}
+            </div>
+            <div className="text-xs text-gray-500 text-right">
+              {/* <div>Vendedor: <span className="font-semibold text-black">RevivoX</span></div> */}
+              <div>Única unidad disponible</div>
+              <div> Reacondicionado certificado</div>
+              <div className="flex items-center justify-end gap-1">
+                <ShieldCheck className="w-4 h-4" color="green"/> 
+                <span>Garantía 6 meses</span>
+              </div>
+            </div>
+          </div>
         </div>
-        {product.sold && (
-          <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-            Vendido
-          </div>
-        )}
       </div>
     </Link>
-  );
+  );  
 } 
