@@ -13,6 +13,7 @@ export const products = pgTable('products', {
   description: text('description').notNull(),
   image: text('image').notNull(),
   price: decimal('price', { precision: 10, scale: 2 }).notNull(),
+  discount: decimal('discount', { precision: 10, scale: 2 }).notNull(),
   sold: boolean('sold').default(false),
   type: text('type', { enum: ['laptop', 'minipc', 'accessory', 'other'] }).notNull().default('laptop'),
   created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
@@ -41,7 +42,7 @@ export interface Database {
           image: string
           price: number
           sold: boolean
-          type: 'laptop' | 'minipc' | 'accessory' | 'other'
+          type: 'laptop' | 'services' | 'accessory' | 'other'
           created_at: string
         }
         Insert: {
@@ -51,7 +52,7 @@ export interface Database {
           image: string
           price: number
           sold?: boolean
-          type: 'laptop' | 'minipc' | 'accessory' | 'other'
+          type: 'laptop' | 'services' | 'accessory' | 'other'
           created_at?: string
         }
         Update: {
@@ -61,7 +62,7 @@ export interface Database {
           image?: string
           price?: number
           sold?: boolean
-          type?: 'laptop' | 'minipc' | 'accessory' | 'other'
+          type?: 'laptop' | 'services' | 'accessory' | 'other'
           created_at?: string
         }
       }
