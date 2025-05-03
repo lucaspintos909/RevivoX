@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 import Image from 'next/image';
 
 interface Laptop {
-  id: number;
+  id: string;
   nombre: string;
   descripcion: string;
   imagen: string;
