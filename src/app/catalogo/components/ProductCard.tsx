@@ -91,11 +91,15 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div>
               {product.discount && Number(product.discount) > 0 ? (
                 <>
+                  <span className="text-base text-red-400 line-through">${product.price}</span> <br />
                   <span className="text-2xl font-bold text-gray-900 mr-2">${product.discount}</span>
-                  <span className="text-base text-red-400 line-through">${product.price}</span>
+                  <span className="text-sm text-gray-500">USD</span>
                 </>
               ) : (
-                <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+                <>
+                  <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+                  <span className="text-sm text-gray-500">USD</span>
+                </>
               )}
             </div>
             <div className="text-xs text-gray-500 text-right">
