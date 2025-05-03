@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { MuseoModerno } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import type React from "react"; // Import React
 import { cn } from "@/lib/utils";
 import CodeSigningInjeciton from "@/components/CodeSigningInjection";
 import { Providers } from './providers';
 
-const museoModerno = MuseoModerno({
+const lato = Lato({
   subsets: ["latin"],
   display: "swap",
+  weight: ["100", "300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
   title: "RevivoX",
   description:
-    "Venta de laptops usadas en Montevideo, Uruguay",
+    "Laptops reacondicionadas en Montevideo, Uruguay",
   keywords: [
     "venta de laptops",
     "laptops usadas",
@@ -39,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={cn(museoModerno.className, "antialiased")}>
+      <body className={cn(lato.className, "antialiased")}>
         <Providers>
           {children}
         </Providers>
