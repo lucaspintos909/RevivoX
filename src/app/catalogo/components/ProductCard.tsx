@@ -87,7 +87,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
             </div>
           </div>
-          <div className="flex items-end justify-between mt-2 flex-wrap gap-2">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mt-2 gap-2">
             <div>
               {product.discount && Number(product.discount) > 0 ? (
                 <>
@@ -99,9 +99,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               )}
             </div>
             <div className="text-xs text-gray-500 text-right">
-              {/* <div>Vendedor: <span className="font-semibold text-black">RevivoX</span></div> */}
               <div>Única unidad disponible</div>
-              <div> Reacondicionado certificado</div>
+              <div>Reacondicionado certificado</div>
               <div className="flex items-center justify-end gap-1">
                 <ShieldCheck className="w-4 h-4" color="green"/> 
                 <span>Garantía 6 meses</span>
