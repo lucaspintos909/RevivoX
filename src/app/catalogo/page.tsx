@@ -3,7 +3,7 @@ import { Product, ProductType, SortOptions } from './types';
 import ProductFilters from './components/ProductFilters';
 import CatalogSkeleton from './components/CatalogSkeleton';
 import { Suspense } from 'react';
-import AnimatedProducts from './components/AnimatedProducts';
+import ProductList from './components/ProductList';
 import Navigation from '@/components/Navigation';
 
 async function getProducts(
@@ -56,17 +56,18 @@ async function getProducts(
   };
 }
 
-function CatalogContent({
+export default async function CatalogPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const type = (searchParams.type as ProductType) || 'todos';
-  const page = parseInt(searchParams.page as string) || 0;
-  const sortField = (searchParams.sortField as SortOptions['field']) || 'price';
-  const sortOrder = (searchParams.sortOrder as SortOptions['order']) || 'desc';
-  const search = searchParams.search as string;
-  const itemsPerPage = parseInt(searchParams.itemsPerPage as string) || 12;
+  const params = await searchParams;
+  const type = (params.type as ProductType) || 'todos';
+  const page = parseInt(params.page as string) || 0;
+  const sortField = (params.sortField as SortOptions['field']) || 'price';
+  const sortOrder = (params.sortOrder as SortOptions['order']) || 'desc';
+  const search = params.search as string;
+  const itemsPerPage = parseInt(params.itemsPerPage as string) || 12;
 
   return (
     <>
@@ -108,7 +109,7 @@ async function CatalogProducts({
   const { products, totalProducts } = await getProducts(page, itemsPerPage, type, sortOptions, searchQuery);
 
   return (
-    <AnimatedProducts 
+    <ProductList 
       products={products} 
       type={type} 
       page={page} 
@@ -116,12 +117,4 @@ async function CatalogProducts({
       itemsPerPage={itemsPerPage}
     />
   );
-}
-
-export default async function CatalogPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  return <CatalogContent searchParams={searchParams} />;
 }
