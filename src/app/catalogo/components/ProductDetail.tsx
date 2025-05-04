@@ -85,7 +85,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                       href="https://wa.me/598XXXXXXXXXX"
                       icon={MessageCircle}
                       label="WhatsApp"
-                      className="bg-green-500"
+                      className="bg-green-600"
                     />
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                     href="https://www.mercadolibre.com.ar"
                     icon={ExternalLink}
                     label="MercadoLibre"
-                    className="bg-blue-500"
+                    className="bg-blue-600"
                   />
                 </div>
               </div>
