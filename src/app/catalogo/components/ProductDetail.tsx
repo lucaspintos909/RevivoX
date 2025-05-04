@@ -18,7 +18,7 @@ import ExtraFeature from './ExtraFeature';
 import { TECHNICAL_SPECS, EXTRA_FEATURES } from '../[id]/constants';
 import { FadeIn, SlideUp } from './AnimatedContainer';
 
-export default function AnimatedProductDetail({ product }: { product: Product }) {
+export default function ProductDetail({ product }: { product: Product }) {
   return (
     <SlideUp className="container mx-auto px-4 py-8 mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -85,7 +85,7 @@ export default function AnimatedProductDetail({ product }: { product: Product })
                       href="https://wa.me/598XXXXXXXXXX"
                       icon={MessageCircle}
                       label="WhatsApp"
-                      className="bg-green-500"
+                      className="bg-green-600"
                     />
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function AnimatedProductDetail({ product }: { product: Product })
                     href="https://www.mercadolibre.com.ar"
                     icon={ExternalLink}
                     label="MercadoLibre"
-                    className="bg-blue-500"
+                    className="bg-blue-600"
                   />
                 </div>
               </div>
