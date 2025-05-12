@@ -7,8 +7,10 @@ import {
   Banknote, 
   CreditCard, 
   MessageCircle,
+  ArrowLeft,
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Badge from './Badge';
 import PriceDisplay from './PriceDisplay';
 import PaymentMethod from './PaymentMethod';
@@ -21,6 +23,13 @@ import { FadeIn, SlideUp } from './AnimatedContainer';
 export default function ProductDetail({ product }: { product: Product }) {
   return (
     <SlideUp className="container mx-auto px-4 py-8 mt-16">
+      <Link 
+        href="/catalogo" 
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-4"
+      >
+        <ArrowLeft size={20} />
+        <span>Volver al catálogo</span>
+      </Link>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Sección de imágenes */}
         <FadeIn delay={0.2} className="space-y-4">
@@ -82,7 +91,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                       className="bg-gradient-to-r from-pink-500 to-purple-500"
                     />
                     <ContactButton
-                      href="https://wa.me/598XXXXXXXXXX"
+                      href="https://wa.me/59899619674"
                       icon={MessageCircle}
                       label="WhatsApp"
                       className="bg-green-600"
