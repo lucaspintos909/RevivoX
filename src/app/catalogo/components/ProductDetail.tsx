@@ -91,7 +91,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                       className="bg-gradient-to-r from-pink-500 to-purple-500"
                     />
                     <ContactButton
-                      href="https://wa.me/598XXXXXXXXXX"
+                      href="https://wa.me/59899619674"
                       icon={MessageCircle}
                       label="WhatsApp"
                       className="bg-green-600"
