@@ -26,6 +26,11 @@ const nextConfig = {
         hostname: 'static.xx.fbcdn.net',
         pathname: '/rsrc.php/v4/yx/r/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'http2.mlstatic.com',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {
