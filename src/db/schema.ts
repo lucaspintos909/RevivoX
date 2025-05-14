@@ -10,12 +10,14 @@ export const usersTable = pgTable("users", {
 export const products = pgTable('products', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: text('name').notNull(),
+  short_description: text('short_description').notNull().default(''),
   description: text('description').notNull(),
   image: text('image').notNull(),
   price: decimal('price', { precision: 10, scale: 2 }).notNull(),
   discount: decimal('discount', { precision: 10, scale: 2 }).notNull(),
   sold: boolean('sold').default(false),
   type: text('type', { enum: ['laptop', 'minipc', 'accessory', 'other'] }).notNull().default('laptop'),
+  sale_link: text('sale_link'),
   specs: jsonb('specs').default({
     processor: '',
     ram: '',

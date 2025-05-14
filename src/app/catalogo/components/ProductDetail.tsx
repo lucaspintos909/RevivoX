@@ -101,18 +101,13 @@ export default function ProductDetail({ product }: { product: Product }) {
                 <div className="flex flex-col gap-2">
                   <span className="text-sm text-gray-500">Ver en</span>
                   <ContactButton
-                    href="https://www.mercadolibre.com.ar"
+                    href={product.sale_link || ''}
                     icon={ExternalLink}
                     label="MercadoLibre"
                     className="bg-blue-600"
                   />
                 </div>
               </div>
-            </div>
-
-            <div className="prose max-w-none">
-              <h3 className="text-lg font-semibold text-gray-900">Descripción</h3>
-              <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
             </div>
 
             <div className="space-y-2">
@@ -128,6 +123,12 @@ export default function ProductDetail({ product }: { product: Product }) {
                 ))}
               </ul>
             </div>
+
+            <div className="prose max-w-none">
+              <h3 className="text-lg font-semibold text-gray-900">Descripción</h3>
+              <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
+            </div>
+
 
             {Object.values(product.specs?.extras || {}).some(value => value === true) && (
               <div className="space-y-2">
