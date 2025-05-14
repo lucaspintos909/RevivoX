@@ -17,6 +17,7 @@ export const products = pgTable('products', {
   discount: decimal('discount', { precision: 10, scale: 2 }).notNull(),
   sold: boolean('sold').default(false),
   type: text('type', { enum: ['laptop', 'minipc', 'accessory', 'other'] }).notNull().default('laptop'),
+  sale_link: text('sale_link'),
   specs: jsonb('specs').default({
     processor: '',
     ram: '',

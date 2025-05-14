@@ -8,6 +8,7 @@ export interface Product {
   sold: boolean;
   discount: number;
   type: 'laptop' | 'services' | 'accessory' | 'other';
+  sale_link?: string;
   specs: {
     processor: string;
     ram: string;

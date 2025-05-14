@@ -19,6 +19,7 @@ export const productSchema = z.object({
   price: z.number().min(0),
   sold: z.boolean(),
   type: productTypeSchema,
+  sale_link: z.string().url().optional(),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
 });
