@@ -13,6 +13,7 @@ export const productQuerySchema = z.object({
 export const productSchema = z.object({
   id: z.number(),
   name: z.string().min(1).max(255),
+  short_description: z.string().min(1).max(150),
   description: z.string().min(1),
   image: z.string().url(),
   price: z.number().min(0),
