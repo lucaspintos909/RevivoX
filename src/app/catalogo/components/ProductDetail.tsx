@@ -33,7 +33,7 @@ export default function ProductDetail({ product }: { product: Product }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Sección de imágenes */}
         <FadeIn delay={0.2} className="space-y-4">
-          <div className="relative aspect-square w-full bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative aspect-square w-full bg-white rounded-lg overflow-hidden">
             <Image
               src={product.image}
               alt={product.name}
