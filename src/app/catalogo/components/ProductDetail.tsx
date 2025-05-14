@@ -110,11 +110,6 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
             </div>
 
-            <div className="prose max-w-none">
-              <h3 className="text-lg font-semibold text-gray-900">Descripción</h3>
-              <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
-            </div>
-
             <div className="space-y-2">
               <h3 className="text-lg font-semibold text-gray-900">Especificaciones técnicas</h3>
               <ul className="space-y-2 text-gray-600">
@@ -128,6 +123,12 @@ export default function ProductDetail({ product }: { product: Product }) {
                 ))}
               </ul>
             </div>
+
+            <div className="prose max-w-none">
+              <h3 className="text-lg font-semibold text-gray-900">Descripción</h3>
+              <p className="text-gray-600 whitespace-pre-line">{product.description}</p>
+            </div>
+
 
             {Object.values(product.specs?.extras || {}).some(value => value === true) && (
               <div className="space-y-2">

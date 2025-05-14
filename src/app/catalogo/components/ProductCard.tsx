@@ -112,7 +112,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-medium">Vendido</span>
               )}
               <h2 className="text-lg font-bold text-gray-900 truncate pr-8">{product.name}</h2>
-              <div className="text-sm text-gray-500 mb-2 line-clamp-2">{product.description}</div>
+              <div className="text-sm text-gray-500 mb-2 line-clamp-2">{product.short_description}</div>
               {/* Etiquetas */}
               <div className="flex flex-wrap gap-2 mb-2">
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
