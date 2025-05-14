@@ -101,7 +101,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                 <div className="flex flex-col gap-2">
                   <span className="text-sm text-gray-500">Ver en</span>
                   <ContactButton
-                    href="https://www.mercadolibre.com.ar"
+                    href={product.sale_link || ''}
                     icon={ExternalLink}
                     label="MercadoLibre"
                     className="bg-blue-600"
