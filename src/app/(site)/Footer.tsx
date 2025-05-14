@@ -3,22 +3,6 @@ export default function Footer() {
     <footer className="border-t border-zinc-800 bg-[#0F0F0F] px-4 py-12 md:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Column */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-semibold text-white">
-                ⚡ ShipFree
-              </span>
-            </div>
-            <p className="text-sm text-zinc-400">Built for makers, by makers</p>
-            <p className="text-sm text-zinc-500">
-              Copyright © 2025 - All rights reserved
-            </p>
-            <div className="inline-flex items-center gap-2 rounded-md border border-zinc-500 bg-zinc-800/50 px-4 py-2 text-xs text-zinc-400">
-              Built with ⚡ ShipFree
-            </div>
-          </div>
-
           {/* Links Column */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-400">

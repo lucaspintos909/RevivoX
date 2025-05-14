@@ -29,7 +29,7 @@ export const Feature = memo(({ children, className }: FeatureProps) => {
       role="listitem"
     >
       <Check 
-        className="w-5 h-5 text-green-500 flex-shrink-0" 
+        className="w-5 h-5 text-[#FF8806] flex-shrink-0" 
         aria-hidden="true"
         role="img"
       />
