@@ -56,7 +56,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Heart className="w-5 h-5" />
           </button>
           {/* Imagen */}
-          <div className="flex-shrink-0 w-full md:w-48 h-40 flex items-center justify-center bg-gray-100 rounded overflow-hidden relative">
+          <div className="flex-shrink-0 w-full md:w-48 h-40 flex items-center justify-center bg-white rounded overflow-hidden relative">
             {isImageLoading && !isImageError && (
               <motion.div
                 initial={{ opacity: 0 }}
