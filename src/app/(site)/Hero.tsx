@@ -114,9 +114,9 @@ const HeroSection = () => {
             className="max-w-md mx-auto"
             animate={{
               boxShadow: [
-                "0 0 0 0 rgba(16, 185, 129, 0.4)",
-                "0 0 0 10px rgba(16, 185, 129, 0)",
-                "0 0 0 0 rgba(16, 185, 129, 0.4)"
+                "0 0 0 0 #FF8806",
+                "0 0 0 10px rgba(255,160,57, 0)",
+                "0 0 0 0 #FF8806"
               ],
               borderRadius: [
                 "12px",
@@ -130,8 +130,8 @@ const HeroSection = () => {
               ease: "easeInOut"
             }}
           >
-            <div className="rounded-xl bg-zinc-800 p-6 border border-green-500/50 relative">
-              <div className="inline-flex items-center gap-1 absolute -top-3 right-6 bg-green-500 text-black text-sm font-semibold px-3 py-1 rounded-full">
+            <div className="rounded-xl bg-zinc-800 p-6 border border-[#FF8806]/50 relative">
+              <div className="inline-flex items-center gap-1 absolute -top-3 right-6 bg-[#FF8806] text-black text-sm font-semibold px-3 py-1 rounded-full">
                 RevivoX 
                 <ShieldCheck 
                   className="w-4 h-4" 
@@ -155,7 +155,7 @@ const HeroSection = () => {
               </p>
               <Link
                 href="#wall-of-love"
-                className="w-full bg-green-500 hover:bg-green-400 transition-colors text-black font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2"
+                className="w-full bg-[#FF8806] hover:bg-[#ffa039] transition-colors text-black font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2"
                 aria-label="Ver reseñas de clientes"
               >
                 <span aria-hidden="true">⚡</span> Ver reseñas de nuestros clientes
