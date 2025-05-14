@@ -1,12 +1,14 @@
 export interface Product {
   id: string;
   name: string;
+  short_description: string;
   description: string;
   image: string;
   price: number;
   sold: boolean;
   discount: number;
   type: 'laptop' | 'services' | 'accessory' | 'other';
+  sale_link?: string;
   specs: {
     processor: string;
     ram: string;
