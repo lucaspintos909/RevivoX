@@ -58,6 +58,9 @@ export default function ProductDetail({ product }: { product: Product }) {
             <SlideUp className="text-2xl font-bold text-gray-900">
               {product.name}
             </SlideUp>
+            <SlideUp className="text-xl font-bold text-gray-500">
+              {product.short_description}
+            </SlideUp>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Única unidad disponible</span>
             </div>
