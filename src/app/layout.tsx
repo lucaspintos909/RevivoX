@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Lato } from "next/font/google";
 import "./globals.css";
 import type React from "react"; // Import React
@@ -45,6 +46,7 @@ export default function RootLayout({
           {children}
         </Providers>
         <CodeSigningInjeciton />
+        <GoogleAnalytics gaId="G-R2LDB2LNWV"/>
       </body>
     </html>
   );
