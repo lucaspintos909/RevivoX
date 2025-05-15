@@ -15,8 +15,7 @@ export default function SEO({
   description,
   canonicalUrl,
   ogImageUrl,
-  ogType = "website",
-  twitterHandle,
+  ogType = "website"
 }: SEOProps) {
   return (
     <Head>
@@ -32,15 +31,6 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImageUrl} />
       <meta property="og:url" content={canonicalUrl} />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImageUrl} />
-      {twitterHandle && (
-        <meta name="twitter:site" content={`@${twitterHandle}`} />
-      )}
     </Head>
   );
 }
