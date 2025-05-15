@@ -46,7 +46,7 @@ export default function RootLayout({
           {children}
         </Providers>
         <CodeSigningInjeciton />
-        <GoogleAnalytics gaId="G-XYZ"/>
+        <GoogleAnalytics gaId="G-R2LDB2LNWV"/>
       </body>
     </html>
   );
