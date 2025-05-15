@@ -15,8 +15,7 @@ export default function SEO({
   description,
   canonicalUrl,
   ogImageUrl,
-  ogType = "website",
-  twitterHandle,
+  ogType = "website"
 }: SEOProps) {
   return (
     <Head>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script"
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Lato } from "next/font/google";
 import "./globals.css";
 import type React from "react"; // Import React
@@ -46,11 +46,7 @@ export default function RootLayout({
           {children}
         </Providers>
         <CodeSigningInjeciton />
-        <Script
-          src="https://app.rybbit.io/api/script.js"
-          data-site-id="556"
-          strategy="afterInteractive"
-        />
+        <GoogleAnalytics gaId="G-R2LDB2LNWV"/>
       </body>
     </html>
   );
