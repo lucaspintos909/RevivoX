@@ -112,10 +112,14 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-medium">Vendido</span>
               )}
               <h2 className="text-lg font-bold text-gray-900 truncate pr-8">{product.name}</h2>
-              <div className="text-sm text-gray-500 mb-2 line-clamp-2">{product.short_description}</div>
+              <div className="text-sm text-gray-500 mb-2 line-clamp-2">
+                {product.type === 'services' ? product.description : product.short_description}
+              </div>
               {/* Etiquetas */}
               <div className="flex flex-wrap gap-2 mb-2">
-                <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
+                {product.type !== 'services' && (
+                  <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
+                )}
               </div>
             </div>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mt-2 gap-2">
@@ -134,8 +138,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                 )}
               </div>
               <div className="text-xs text-gray-500 text-right">
-                <div>Única unidad disponible</div>
-                <div>Reacondicionado certificado</div>
+                {product.type !== 'services' && (
+                  <>
+                    <div>Única unidad disponible</div>
+                    <div>Reacondicionado certificado</div>
+                  </>
+                )}
                 <div className="flex items-center justify-end gap-1">
                   <ShieldCheck className="w-4 h-4" color="green"/> 
                   <span>Garantía 6 meses</span>
