@@ -116,7 +116,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
   const catalogLinks: NavLink[] = [
     { href: "/", label: "Home" },
     { href: "/#faq", label: "Preguntas frecuentes" },
-    { href: "/#wall-of-love", label: "Reseñas" },
+    // { href: "/#wall-of-love", label: "Reseñas" },
     { href: "/#nosotros", label: "Nosotros" },
   ];
 
