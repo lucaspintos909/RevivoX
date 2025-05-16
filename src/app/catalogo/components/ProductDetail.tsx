@@ -113,19 +113,21 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900">Especificaciones técnicas</h3>
-              <ul className="space-y-2 text-gray-600">
-                {TECHNICAL_SPECS.map(({ key, icon: Icon, label }) => (
-                  <SpecItem
-                    key={key}
-                    icon={Icon}
-                    label={label}
-                    value={product.specs?.[key] || 'No especificado'}
-                  />
-                ))}
-              </ul>
-            </div>
+            {product.type !== 'services' && (
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-gray-900">Especificaciones técnicas</h3>
+                <ul className="space-y-2 text-gray-600">
+                  {TECHNICAL_SPECS.map(({ key, icon: Icon, label }) => (
+                    <SpecItem
+                      key={key}
+                      icon={Icon}
+                      label={label}
+                      value={product.specs?.[key] || 'No especificado'}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="prose max-w-none">
               <h3 className="text-lg font-semibold text-gray-900">Descripción</h3>

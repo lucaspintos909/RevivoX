@@ -107,9 +107,9 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
   };
 
   const defaultLinks: NavLink[] = [
-    { href: "/catalogo?type=laptops", label: "Laptops" },
+    { href: "/catalogo?type=laptops", label: "Laptops y servicios" },
     { href: "#faq", label: "Preguntas frecuentes" },
-    { href: "#wall-of-love", label: "Reseñas" },
+    // { href: "#wall-of-love", label: "Reseñas" },
     { href: "#nosotros", label: "Nosotros" },
   ];
 
