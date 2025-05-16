@@ -11,6 +11,7 @@ export const museoModerno = MuseoModerno({
   subsets: ["latin"],
   display: "swap",
 });
+
 interface NavLink {
   href: string;
   label: string;
@@ -26,13 +27,13 @@ interface NavigationProps {
  * Componente que muestra un enlace de navegación
  * @component
  */
-const NavLink = memo(({ href, label, onClick, isActive, isCatalog }: NavLink & { onClick?: () => void; isCatalog: boolean }) => {
+const NavLink = memo(({ href, label, onClick, isActive }: NavLink & { onClick?: () => void }) => {
   return (
     <Link
       href={href}
       className={cn(
         "text-base transition focus:outline-none underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-[#FF8806]",
-        isCatalog ? "text-gray-900 hover:text-gray-700" : "text-white hover:text-zinc-300 ",
+        "text-[#CFCFCF] hover:text-[#FF8806]",
         isActive && "font-medium"
       )}
       onClick={onClick}
@@ -51,22 +52,17 @@ NavLink.displayName = 'NavLink';
 const MobileMenu = memo(({ 
   isOpen, 
   onClose,
-  links,
-  isCatalog
+  links
 }: { 
   isOpen: boolean; 
   onClose: () => void;
   links: NavLink[];
-  isCatalog: boolean;
 }) => {
   if (!isOpen) return null;
 
   return (
     <div 
-      className={cn(
-        "md:hidden",
-        isCatalog ? "bg-white" : "bg-[#212121]"
-      )}
+      className="md:hidden bg-[#212121] border-t border-zinc-700"
       role="dialog"
       aria-modal="true"
       aria-label="Menú de navegación"
@@ -77,8 +73,8 @@ const MobileMenu = memo(({
             key={link.href}
             href={link.href}
             className={cn(
-              "block rounded-md px-3 py-2 text-base font-medium transition hover:bg-[#3C3C3C] focus:outline-none",
-              isCatalog ? "text-gray-900 hover:text-white" : "text-white/90 hover:text-white",
+              "block rounded-md px-3 py-2 text-base font-medium transition hover:bg-zinc-800 focus:outline-none",
+              "text-[#CFCFCF] hover:text-[#FF8806]",
               link.isActive && "font-medium"
             )}
             onClick={onClose}
@@ -100,7 +96,6 @@ MobileMenu.displayName = 'MobileMenu';
 const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isCatalog = pathname.startsWith('/catalogo');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -109,14 +104,12 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
   const defaultLinks: NavLink[] = [
     { href: "/catalogo?type=laptops", label: "Laptops y servicios" },
     { href: "#faq", label: "Preguntas frecuentes" },
-    // { href: "#wall-of-love", label: "Reseñas" },
     { href: "#nosotros", label: "Nosotros" },
   ];
 
   const catalogLinks: NavLink[] = [
     { href: "/", label: "Home" },
     { href: "/#faq", label: "Preguntas frecuentes" },
-    // { href: "/#wall-of-love", label: "Reseñas" },
     { href: "/#nosotros", label: "Nosotros" },
   ];
 
@@ -129,10 +122,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
 
   return (
     <nav 
-      className={cn(
-        "fixed top-0 z-50 w-full",
-        isCatalog ? "bg-white shadow-md" : "bg-[#212121]"
-      )}
+      className="fixed top-0 z-50 w-full bg-[#212121] border-b border-zinc-700"
       role="navigation"
       aria-label="Navegación principal"
     >
@@ -144,8 +134,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
           >
             <span className={cn(
               museoModerno.className,
-              "text-4xl font-semibold",
-              isCatalog ? "text-gray-900" : "text-white"
+              "text-4xl font-semibold text-[#CFCFCF]"
             )}>RevivoX</span>
           </Link>
         </div>
@@ -154,8 +143,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
           {activeLinks.map((link) => (
             <NavLink 
               key={link.href} 
-              {...link} 
-              isCatalog={isCatalog}
+              {...link}
             />
           ))}
         </div>
@@ -164,10 +152,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
           <button
             type="button"
             onClick={toggleMenu}
-            className={cn(
-              "inline-flex items-center justify-center rounded-md p-2 transition focus:outline-none",
-              isCatalog ? "text-gray-900 hover:text-gray-700" : "text-white hover:text-zinc-300"
-            )}
+            className="inline-flex items-center justify-center rounded-md p-2 transition focus:outline-none text-[#CFCFCF] hover:text-[#FF8806]"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -187,8 +172,7 @@ const Navigation = memo(({ variant = 'default' }: NavigationProps) => {
       <MobileMenu 
         isOpen={isMenuOpen} 
         onClose={toggleMenu} 
-        links={activeLinks} 
-        isCatalog={isCatalog}
+        links={activeLinks}
       />
     </nav>
   );

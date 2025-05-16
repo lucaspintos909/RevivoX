@@ -6,16 +6,17 @@ interface PaymentMethodProps {
   icon: LucideIcon;
   title: string;
   description: string;
+  className?: string;
 }
 
-export default function PaymentMethod({ icon: Icon, title, description }: PaymentMethodProps) {
+export default function PaymentMethod({ icon: Icon, title, description, className = 'bg-zinc-800' }: PaymentMethodProps) {
   return (
-    <div className="flex flex-col gap-2 p-4 bg-gray-50 rounded-lg">
-      <div className="flex items-center gap-2">
-        <Icon className="w-5 h-5 text-green-600" />
-        <span className="font-medium text-gray-900">{title}</span>
+    <div className={`${className} rounded-lg p-4 flex items-start gap-3`}>
+      <Icon className="w-5 h-5 text-[#FF8806] flex-shrink-0" />
+      <div>
+        <h4 className="font-medium text-[#CFCFCF]">{title}</h4>
+        <p className="text-sm text-zinc-400">{description}</p>
       </div>
-      <p className="text-sm text-gray-600">{description}</p>
     </div>
   );
 } 

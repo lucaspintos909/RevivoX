@@ -9,9 +9,9 @@ interface ExtraFeatureProps {
 
 export default function ExtraFeature({ icon: Icon, label }: ExtraFeatureProps) {
   return (
-    <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-      <Icon className="w-5 h-5 text-green-600" />
-      <span className="text-sm">{label}</span>
+    <div className="bg-zinc-800 rounded-lg p-3 flex items-center gap-2 border border-zinc-700">
+      <Icon className="w-5 h-5 text-[#FF8806] flex-shrink-0" />
+      <span className="text-sm text-[#CFCFCF]">{label}</span>
     </div>
   );
 } 
