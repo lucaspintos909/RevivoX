@@ -32,9 +32,9 @@ const AboutUs = () => {
           Conoce al equipo detrás de RevivoX
         </h2>
         
-        <div className="relative w-full h-[500px] mb-12">
+        <div className="relative w-full max-w-2xl mx-auto h-[700px] mb-12">
           <Image
-            src="https://images.unsplash.com/photo-1603861868946-cafb303e0387?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://i.postimg.cc/4NDbjSQ5/Whats-App-Image-2025-05-15-at-18-28-56-1.jpg"
             alt="Equipo RevivoX trabajando en el reacondicionamiento de laptops"
             fill
             className="object-cover rounded-lg"

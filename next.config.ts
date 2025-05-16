@@ -31,6 +31,11 @@ const nextConfig = {
         hostname: 'http2.mlstatic.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+        pathname: '/**',
+      },
     ],
   },
   async headers() {
