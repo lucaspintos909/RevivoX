@@ -148,7 +148,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
 
               {Object.values(product.specs?.extras || {}).some(value => value === true) && (
-                <div className="space-y-2 bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+                <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-zinc-900 dark:text-[#CFCFCF]">Características adicionales</h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {EXTRA_FEATURES.map(({ key, icon: Icon, label }) => 
