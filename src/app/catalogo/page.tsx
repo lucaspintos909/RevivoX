@@ -72,9 +72,9 @@ export default async function CatalogPage({
   return (
     <>
       <Navigation variant="catalog" />
-      <div className="min-h-screen bg-[#212121] text-[#CFCFCF]">
+      <div className="min-h-screen bg-white dark:bg-[#212121] text-zinc-900 dark:text-[#CFCFCF]">
         <div className="container mx-auto px-4 py-8 mt-16">
-          <h1 className="text-4xl font-bold mb-8 text-[#CFCFCF]">Nuestros productos y servicios</h1>
+          <h1 className="text-4xl font-bold mb-8 text-zinc-900 dark:text-[#CFCFCF]">Nuestros productos y servicios</h1>
           <div className="mb-8">
             <ProductFilters 
               currentType={type}

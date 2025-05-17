@@ -58,16 +58,16 @@ export default function ProductFilters({ currentType, sortOptions }: ProductFilt
               name="search"
               placeholder="Buscar productos..."
               defaultValue={searchParams.get('search') || ''}
-              className="w-full px-4 py-2 pl-10 bg-zinc-800 border border-zinc-700 rounded-lg text-[#CFCFCF] placeholder-zinc-500 focus:outline-none focus:border-[#FF8806] transition-colors"
+              className="w-full px-4 py-2 pl-10 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-[#CFCFCF] placeholder-zinc-500 focus:outline-none focus:border-[#FF8806] transition-colors"
             />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-500 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 dark:text-zinc-500 w-4 h-4" />
           </div>
         </form>
         <div className="flex-shrink-0">
           <select
             value={`${sortOptions.field}-${sortOptions.order}`}
             onChange={handleSortChange}
-            className="w-full sm:w-auto px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-[#CFCFCF] focus:outline-none focus:border-[#FF8806] transition-colors"
+            className="w-full sm:w-auto px-4 py-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-[#CFCFCF] focus:outline-none focus:border-[#FF8806] transition-colors"
           >
             <option value="price-desc">Mayor Precio</option>
             <option value="price-asc">Menor Precio</option>
@@ -85,7 +85,7 @@ export default function ProductFilters({ currentType, sortOptions }: ProductFilt
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               currentType === value
                 ? 'bg-[#FF8806] text-black'
-                : 'bg-zinc-800 text-[#CFCFCF] hover:bg-zinc-700'
+                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-[#CFCFCF] hover:bg-zinc-200 dark:hover:bg-zinc-700'
             }`}
           >
             {label}

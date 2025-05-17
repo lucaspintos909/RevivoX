@@ -30,7 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center rounded-lg"
+            className="absolute inset-0 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm z-50 flex items-center justify-center rounded-lg"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -40,7 +40,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               className="flex flex-col items-center gap-2"
             >
               <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
-              <span className="text-sm text-gray-600">Cargando producto...</span>
+              <span className="text-sm text-zinc-600 dark:text-zinc-400">Cargando producto...</span>
             </motion.div>
           </motion.div>
         )}
@@ -50,13 +50,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         className="block"
         onClick={handleClick}
       >
-        <div className="bg-zinc-800 rounded-lg border border-zinc-700 hover:border-[#FF8806] flex flex-col md:flex-row p-4 gap-4 relative group transition">
+        <div className="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:border-[#FF8806] flex flex-col md:flex-row p-4 gap-4 relative group transition">
           {/* Botón de favorito */}
-          <button className="absolute top-4 right-4 text-zinc-500 hover:text-[#FF8806] z-10 bg-zinc-800 rounded-full p-1 shadow-md">
+          <button className="absolute top-4 right-4 text-zinc-400 dark:text-zinc-500 hover:text-[#FF8806] z-10 bg-white dark:bg-zinc-800 rounded-full p-1 shadow-md">
             <Heart className="w-5 h-5" />
           </button>
           {/* Imagen */}
-          <div className="flex-shrink-0 w-full md:w-48 h-40 flex items-center justify-center bg-zinc-900 rounded overflow-hidden relative">
+          <div className="flex-shrink-0 w-full md:w-48 h-40 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 rounded overflow-hidden relative">
             {isImageLoading && !isImageError && (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -70,8 +70,22 @@ export default function ProductCard({ product }: ProductCardProps) {
                   width="100%"
                   height="100%"
                   viewBox="0 0 400 300"
+                  backgroundColor="#f3f4f6"
+                  foregroundColor="#e5e7eb"
+                  className="dark:hidden"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <rect x="0" y="0" rx="8" ry="8" width="400" height="300" />
+                </ContentLoader>
+                <ContentLoader
+                  uniqueKey={`product-skeleton-dark-${product.id}`}
+                  speed={2}
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 400 300"
                   backgroundColor="#27272a"
                   foregroundColor="#3f3f46"
+                  className="hidden dark:block"
                   preserveAspectRatio="xMidYMid slice"
                 >
                   <rect x="0" y="0" rx="8" ry="8" width="400" height="300" />
@@ -94,7 +108,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 }}
               />
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-500">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500">
                 <HiOutlinePhotograph className="w-16 h-16 mb-2" />
                 <span className="text-sm">Imagen no disponible</span>
               </div>
@@ -104,21 +118,21 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex flex-col flex-1 justify-between min-w-0">
             <div>
               {Number(product.discount) > 0 && (
-                <span className="inline-block mb-1 bg-red-900/20 text-red-400 text-xs font-bold px-2 py-0.5 rounded">
+                <span className="inline-block mb-1 bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-xs font-bold px-2 py-0.5 rounded">
                   ¡Oferta!
                 </span>
               )}
               {product.sold && (
-                <span className="bg-red-900/20 text-red-400 px-2 py-0.5 rounded text-xs font-medium">Vendido</span>
+                <span className="bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400 px-2 py-0.5 rounded text-xs font-medium">Vendido</span>
               )}
-              <h2 className="text-lg font-bold text-[#CFCFCF] truncate pr-8">{product.name}</h2>
-              <div className="text-sm text-zinc-400 mb-2 line-clamp-2">
+              <h2 className="text-lg font-bold text-zinc-900 dark:text-[#CFCFCF] truncate pr-8">{product.name}</h2>
+              <div className="text-sm text-zinc-600 dark:text-zinc-400 mb-2 line-clamp-2">
                 {product.type === 'services' ? product.description : product.short_description}
               </div>
               {/* Etiquetas */}
               <div className="flex flex-wrap gap-2 mb-2">
                 {product.type !== 'services' && (
-                  <span className="bg-blue-900/20 text-blue-400 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
+                  <span className="bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded text-xs font-medium">Reacondicionado</span>
                 )}
               </div>
             </div>
@@ -126,7 +140,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               <div>
                 {product.discount && Number(product.discount) > 0 ? (
                   <>
-                    <span className="text-base text-red-400 line-through">${product.price}</span> <br />
+                    <span className="text-base text-red-600 dark:text-red-400 line-through">${product.price}</span> <br />
                     <span className="text-2xl font-bold text-[#FF8806] mr-2">${product.discount}</span>
                     <span className="text-sm text-zinc-500">USD</span>
                   </>
